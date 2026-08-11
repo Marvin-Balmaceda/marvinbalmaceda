@@ -1,0 +1,22 @@
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0E14" media="(prefers-color-scheme: dark)">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Theme, resolved before first paint so there is no flash of the wrong one.
+     Kept inline and tiny on purpose: an external file would race the stylesheet. -->
+<script>
+  (function () {
+    var t = localStorage.getItem('theme');
+    if (t) document.documentElement.dataset.theme = t;
+    document.documentElement.className = 'js';
+  })();
+</script>
+
+<link rel="preload" href="fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/schibsted-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">

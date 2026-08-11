@@ -1,0 +1,116 @@
+<form class="inquiry reveal" id="inquiry-form" name="inquiry" method="POST"
+                action="thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="inquiry">
+            <p class="hp" aria-hidden="true">
+              <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+            </p>
+
+            <fieldset class="fieldset">
+              <legend><b>(01)</b> <em>you</em></legend>
+
+              <label class="field">
+                <span class="field__label">Name <span class="field__req">required</span></span>
+                <input class="input" type="text" name="name" required autocomplete="name">
+              </label>
+
+              <label class="field">
+                <span class="field__label">Email <span class="field__req">required</span></span>
+                <input class="input" type="email" name="email" required autocomplete="email">
+              </label>
+
+              <label class="field">
+                <span class="field__label">Company or brand</span>
+                <input class="input" type="text" name="company" autocomplete="organization"
+                       placeholder="Or the name of the brand this is for">
+              </label>
+            </fieldset>
+
+            <fieldset class="fieldset">
+              <legend><b>(02)</b> <em>the project</em></legend>
+
+              <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
+                <legend class="field__label" style="margin-bottom:var(--s3);font-style:normal;color:var(--text-primary)">
+                  What do you need? <span class="field__req">pick any</span>
+                </legend>
+                <div class="choices choices--2" data-required-group="need">
+                  <label class="choice"><input type="checkbox" name="need" value="Design to build"> Design to build</label>
+                  <label class="choice"><input type="checkbox" name="need" value="Funnels and order forms"> Funnels and order forms</label>
+                  <label class="choice"><input type="checkbox" name="need" value="Membership or course site"> Membership or course site</label>
+                  <label class="choice"><input type="checkbox" name="need" value="CRM and automation"> CRM and automation</label>
+                  <label class="choice"><input type="checkbox" name="need" value="Speed, tracking and care"> Speed, tracking and care</label>
+                  <label class="choice"><input type="checkbox" name="need" value="Not sure yet"> Not sure yet — I need advice</label>
+                </div>
+              </fieldset>
+
+              <label class="field">
+                <span class="field__label">Where does it live?</span>
+                <select class="select" name="platform">
+                  <option value="">Choose one</option>
+                  <option>WordPress</option><option>ClickFunnels</option><option>Kajabi</option>
+                  <option>Shopify</option><option>Webflow</option><option>Wix</option>
+                  <option>GoHighLevel</option><option>Something else</option><option>Nothing yet</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span class="field__label">What are you building, and what does done look like? <span class="field__req">required</span></span>
+                <span class="field__hint">A link to the design, the current site, or the launch doc is the fastest way to get a real answer.</span>
+                <textarea class="textarea" name="scope" required minlength="40" rows="6"></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset class="fieldset">
+              <legend><b>(03)</b> <em>scope</em></legend>
+
+              <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
+                <legend class="field__label" style="margin-bottom:var(--s2);font-style:normal;color:var(--text-primary)">
+                  Budget <span class="field__req">required</span>
+                </legend>
+                <span class="field__hint">This isn't a negotiation. It tells me whether to scope one page or twelve.</span>
+                <div class="choices">
+                  <label class="choice"><input type="radio" name="budget" value="Under $5,000" required> Under $5,000</label>
+                  <label class="choice"><input type="radio" name="budget" value="$5,000 – $10,000"> $5,000 &ndash; $10,000</label>
+                  <label class="choice"><input type="radio" name="budget" value="$10,000 – $25,000"> $10,000 &ndash; $25,000</label>
+                  <label class="choice"><input type="radio" name="budget" value="$25,000+"> $25,000+</label>
+                  <label class="choice"><input type="radio" name="budget" value="Monthly care, no project"> Monthly care, no project</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
+                <legend class="field__label" style="margin-bottom:var(--s3);font-style:normal;color:var(--text-primary)">
+                  Timeline <span class="field__req">required</span>
+                </legend>
+                <div class="choices">
+                  <label class="choice"><input type="radio" name="timeline" value="Live in under 3 weeks" required> Live in under 3 weeks</label>
+                  <label class="choice"><input type="radio" name="timeline" value="3–6 weeks"> 3&ndash;6 weeks</label>
+                  <label class="choice"><input type="radio" name="timeline" value="6–12 weeks"> 6&ndash;12 weeks</label>
+                  <label class="choice"><input type="radio" name="timeline" value="Later this quarter"> Later this quarter</label>
+                  <label class="choice"><input type="radio" name="timeline" value="Ongoing, no launch date"> Ongoing, no launch date</label>
+                </div>
+              </fieldset>
+
+              <label class="field">
+                <span class="field__label">Anything fixed?</span>
+                <span class="field__hint">A launch date, an event, a webinar you're driving traffic to.</span>
+                <input class="input" type="text" name="fixed">
+              </label>
+
+              <label class="field">
+                <span class="field__label">How did you find me?</span>
+                <select class="select" name="source">
+                  <option value="">Choose one</option>
+                  <option>Referral</option><option>Search</option><option>A site I built</option>
+                  <option>LinkedIn</option><option>Somewhere else</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <div class="form__submit">
+              <button class="btn btn--primary" type="submit">Send inquiry</button>
+              <span class="form__count" id="form-count" aria-live="polite">0 of 6 answered</span>
+            </div>
+            <p class="form__note" style="margin-top:var(--s4)">No mailing list, no sequence. Just a reply from me.</p>
+            <p class="form__note" style="margin-top:var(--s2)">
+              Rather just email? <a class="link-arrow" href="mailto:hello@marvinbalmaceda.com">hello@marvinbalmaceda.com</a>
+            </p>
+          </form>

@@ -1,0 +1,32 @@
+# Static site: no build step, publish the repo root as-is.
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=(), interest-cohort=()"
+    # No third-party scripts anywhere on this site, which is what makes a CSP
+    # this tight practical. 'unsafe-inline' covers the pre-paint theme script
+    # and the handful of inline style attributes.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

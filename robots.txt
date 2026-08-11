@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+Disallow: /start.html
+
+Sitemap: https://marvinbalmaceda.com/sitemap.xml

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/frontend-design/skills/frontend-design/SKILL.md)",
+      "Bash(gh api *)",
+      "Bash(curl -s https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/frontend-design/.claude-plugin/plugin.json)",
+      "Bash(find / -maxdepth 0)",
+      "Read(//Users/marvinbalmaceda/.claude/**)",
+      "Bash(mkdir -p ~/.claude/skills/frontend-design && ls -la ~/.claude/skills/)",
+      "Bash(curl -s https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/skill.json)"
+    ]
+  }
+}

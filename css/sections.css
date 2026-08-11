@@ -1,0 +1,392 @@
+/* ==========================================================================
+   SECTIONS — page compositions. Vertical rhythm comes from .section only.
+   ========================================================================== */
+
+/* ---- Hero ----------------------------------------------------------------
+   Signature #2. The oversized name runs the full width and bleeds off both
+   edges; the work card sits on top and occludes it. The occlusion is the whole
+   idea — and it happens to be the thesis rendered literally: his name sits
+   behind the work that carries someone else's. */
+
+.hero {
+  position: relative;
+  overflow: clip;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) 0;
+}
+
+.hero__glow {
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 130%;
+  background: var(--glow-warm);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__ghost {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.25rem, 3vw, 2.5rem);
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--font-display);
+  /* Sized so the full name lands with only a slight bleed past each edge.
+     Any larger and it stops reading as a name and becomes abstract stripes. */
+  font-size: clamp(2.25rem, 8.8vw, 7.75rem);
+  font-weight: 700;
+  font-stretch: 118%;
+  letter-spacing: -.045em;
+  line-height: .78;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  background: var(--grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: light-dark(.85, .62);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: end;
+  /* Clears the ghosted name, which sits behind and below this column. */
+  padding-bottom: clamp(6rem, 13vw, 11rem);
+}
+@media (min-width: 940px) {
+  .hero__inner { grid-template-columns: 7fr 5fr; }
+}
+
+.hero h1 {
+  font-size: clamp(2.25rem, 4.6vw, 3.6rem);
+  margin-bottom: var(--s6);
+  max-width: 15ch;
+}
+.hero .lede { margin-bottom: var(--s8); max-width: 46ch; }
+
+/* Numbered roles. The numbers earn their place: three parallel titles read as
+   a set, and the (01) form is the references' own idiom. */
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s6);
+  margin-bottom: var(--s8);
+  padding: 0;
+  list-style: none;
+}
+.roles li {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  font-size: var(--fs-sm);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.roles span {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: var(--fs-micro);
+  color: var(--accent-text);
+}
+
+.hero__cta { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
+
+/* The hero's work card sits above the ghost name and bleeds past the section's
+   bottom edge — the bleed itself says the page is taller than the screen. */
+.hero__figure { position: relative; }
+.hero__figure .work-card { margin-bottom: clamp(-5rem, -6vw, -3rem); }
+@media (max-width: 939px) {
+  .hero__figure { max-width: 340px; }
+  .hero__figure .work-card { margin-bottom: 0; }
+}
+
+/* Portrait slot — used once the commissioned cutout arrives. Kept here so the
+   swap is a markup change, not a redesign. */
+.hero__portrait {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, .28));
+}
+
+/* ---- Stat row ------------------------------------------------------------ */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  gap: var(--s8) var(--s6);
+  padding-block: var(--s12);
+  border-top: 1px solid var(--border-hairline);
+}
+.stat__n {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-m);
+  font-weight: 600;
+  font-stretch: 108%;
+  letter-spacing: -.02em;
+  color: var(--text-primary);
+}
+.stat__l {
+  display: block;
+  margin-top: var(--s1);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+/* ---- Name wall -----------------------------------------------------------
+   ~100 client names as typography, not logos. Crawlable, weightless, and it
+   needs no logo-usage rights. The set with a gallery piece is a live index. */
+
+.namewall {
+  font-family: var(--font-text);
+  font-size: clamp(1.0625rem, 1.9vw, 1.5rem);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  letter-spacing: -.015em;
+  text-wrap: pretty;
+}
+.namewall a {
+  color: var(--text-primary);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-micro) var(--e-state), color var(--t-micro) var(--e-state);
+}
+.namewall a:hover { border-bottom-color: var(--accent); color: var(--accent-text); }
+.namewall i {
+  font-style: normal;
+  color: var(--accent);
+  padding-inline: .3em;
+  opacity: .55;
+}
+
+/* ---- Services ------------------------------------------------------------ */
+
+.services {
+  display: grid;
+  gap: var(--s6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+/* Two columns, not three: four project offers pair evenly, and the retainer
+   below them gets the full width it needs to read as a different kind of thing. */
+@media (min-width: 780px) {
+  .services { grid-template-columns: 1fr 1fr; }
+}
+/* The retainer is different in kind from the four project offers, so it looks
+   different rather than merely sitting last. */
+.services > .card--wide { grid-column: 1 / -1; }
+@media (min-width: 720px) {
+  .services > .card--wide { display: grid; grid-template-columns: 1fr 1fr;
+                            gap: var(--s8); align-items: start; }
+  .services > .card--wide .card__tools { margin-top: 0; border-top: 0;
+                                         padding-top: 0; }
+}
+
+/* ---- Stack spec sheet ----------------------------------------------------
+   Not a logo grid: unlicensed, slow, and it reads as a WordPress plugin.
+   A typeset spec sheet says "I know these" more credibly than borrowed marks. */
+
+.stack__group { padding-block: var(--s6); border-top: 1px solid var(--border-hairline); }
+.stack__group:first-child { border-top: 0; }
+.stack__group h3 {
+  font-family: var(--font-text);
+  font-size: var(--fs-sm);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0;
+  margin-bottom: var(--s4);
+}
+.stack__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 190px), 1fr));
+  gap: var(--s2) var(--s6);
+  padding: 0;
+  list-style: none;
+}
+.stack__list li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-data);
+  letter-spacing: .04em;
+  color: var(--text-secondary);
+  transition: color var(--t-micro) var(--e-state);
+}
+.stack__list li:hover { color: var(--text-primary); }
+
+/* ---- Testimonial --------------------------------------------------------- */
+
+.quote {
+  font-family: var(--font-display);
+  font-size: var(--fs-m);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+.quote__attr {
+  margin-top: var(--s6);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--border-hairline);
+}
+.quote__attr strong { display: block; font-family: var(--font-text); font-size: var(--fs-body); }
+
+.video {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-inset);
+}
+.video video { width: 100%; height: auto; display: block; }
+
+/* ---- FAQ ---------------------------------------------------------------- */
+
+.faq { border-top: 1px solid var(--border-hairline); }
+.faq details { border-bottom: 1px solid var(--border-hairline); }
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding-block: var(--s6);
+  font-family: var(--font-text);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "";
+  flex: none;
+  width: 11px; height: 11px;
+  border-right: 1.5px solid var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform var(--t-state) var(--e-state);
+}
+.faq details[open] summary::after { transform: rotate(225deg) translate(-3px, -3px); }
+.faq details > p { padding-bottom: var(--s6); color: var(--text-secondary); max-width: var(--measure); }
+
+/* ---- Inquiry form -------------------------------------------------------
+   A left rail that fills as required fields complete: the momentum of a wizard
+   without paginating a form this audience wants to see all of at once. */
+
+.inquiry { position: relative; }
+@media (min-width: 720px) {
+  .inquiry { padding-left: var(--s8); }
+  .inquiry::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border-hairline);
+  }
+  .inquiry::after {
+    content: "";
+    position: absolute;
+    left: 0; top: 0;
+    width: 2px;
+    height: var(--filled, 0%);
+    background: var(--accent);
+    transition: height var(--t-state) var(--e-state);
+  }
+}
+
+.fieldset { border: 0; padding: 0; margin: 0 0 var(--s12); }
+.fieldset > legend {
+  display: flex;
+  align-items: baseline;
+  gap: .55rem;
+  padding: 0;
+  margin-bottom: var(--s6);
+  font-size: var(--fs-sm);
+  font-style: italic;
+  color: var(--text-muted);
+}
+.fieldset > legend b {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  color: var(--accent-text);
+}
+
+.form__submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s4);
+  padding-top: var(--s6);
+  border-top: 1px solid var(--border-hairline);
+}
+.form__count { font-family: var(--font-mono); font-size: var(--fs-data);
+               letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+.form__note  { font-size: var(--fs-sm); color: var(--text-muted); }
+
+/* ---- Footer -------------------------------------------------------------
+   Sits on the dark ground BELOW the rounded page card, exactly as the
+   references do — which is also why the ink band needs no theme variant. */
+
+.footer { background: var(--bg-page); color: var(--ink-text); position: relative; overflow: clip; }
+.footer__glow { position: absolute; inset: auto -10% -40% -10%; height: 70%;
+                background: var(--glow-warm); pointer-events: none; }
+.footer__inner { position: relative; z-index: 1; padding-block: var(--s16) var(--s8); }
+
+/* Marquee: a duplicated track translated by exactly -50%, so the loop is
+   seamless. Pure CSS, no library, and it stops under reduced motion. */
+.marquee {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding-block: var(--s8);
+  border-top: 1px solid var(--ink-hairline);
+  border-bottom: 1px solid var(--ink-hairline);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+}
+.marquee__track span {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  font-stretch: 115%;
+  letter-spacing: -.035em;
+  line-height: 1;
+  padding-right: .5em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ink-border);
+}
+.marquee__track span:nth-child(even) { color: var(--ink-text); -webkit-text-stroke: 0; }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+}
+
+.footer__grid {
+  display: grid;
+  gap: var(--s8);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+}
+.footer h2 { font-size: var(--fs-m); margin-bottom: var(--s3); }
+.footer a { color: var(--ink-text-dim); text-decoration: none; }
+.footer a:hover { color: var(--accent); }
+.footer__nav { display: grid; gap: var(--s2); list-style: none; padding: 0; }
+.footer__base {
+  display: flex; flex-wrap: wrap; gap: var(--s4); justify-content: space-between;
+  margin-top: var(--s12); padding-top: var(--s6);
+  border-top: 1px solid var(--ink-hairline);
+  color: var(--ink-text-dim);
+}
