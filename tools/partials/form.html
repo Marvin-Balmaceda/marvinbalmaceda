@@ -1,11 +1,19 @@
-<form class="inquiry reveal" id="inquiry-form" name="inquiry" method="POST"
+<form class="inquiry inquiry--mid reveal" id="inquiry-form" name="inquiry" method="POST"
                 action="thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="inquiry">
             <p class="hp" aria-hidden="true">
               <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
             </p>
 
-            <fieldset class="fieldset">
+            <!-- Step rail. Rendered as real markup so it exists without JS,
+                 where it simply labels the three groups instead of tracking them. -->
+            <ol class="steps" id="steps" aria-hidden="true">
+              <li class="steps__item is-current"><span>1</span> You</li>
+              <li class="steps__item"><span>2</span> The project</li>
+              <li class="steps__item"><span>3</span> Scope</li>
+            </ol>
+
+            <fieldset class="fieldset step" data-step="1">
               <legend><b>(01)</b> <em>you</em></legend>
 
               <label class="field">
@@ -25,14 +33,14 @@
               </label>
             </fieldset>
 
-            <fieldset class="fieldset">
+            <fieldset class="fieldset step" data-step="2">
               <legend><b>(02)</b> <em>the project</em></legend>
 
               <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
                 <legend class="field__label" style="margin-bottom:var(--s3);font-style:normal;color:var(--text-primary)">
                   What do you need? <span class="field__req">pick any</span>
                 </legend>
-                <div class="choices choices--2" data-required-group="need">
+                <div class="choices choices--2">
                   <label class="choice"><input type="checkbox" name="need" value="Design to build"> Design to build</label>
                   <label class="choice"><input type="checkbox" name="need" value="Funnels and order forms"> Funnels and order forms</label>
                   <label class="choice"><input type="checkbox" name="need" value="Membership or course site"> Membership or course site</label>
@@ -59,7 +67,7 @@
               </label>
             </fieldset>
 
-            <fieldset class="fieldset">
+            <fieldset class="fieldset step" data-step="3">
               <legend><b>(03)</b> <em>scope</em></legend>
 
               <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
@@ -105,12 +113,16 @@
               </label>
             </fieldset>
 
-            <div class="form__submit">
-              <button class="btn btn--primary" type="submit">Send inquiry</button>
+            <p class="form__error" id="form-error" role="alert" hidden></p>
+
+            <div class="form__nav">
+              <button class="btn btn--ghost" type="button" id="form-back" hidden>&larr; Back</button>
+              <button class="btn btn--primary" type="button" id="form-next" hidden>Continue &rarr;</button>
+              <button class="btn btn--primary" type="submit" id="form-send">Send inquiry</button>
               <span class="form__count" id="form-count" aria-live="polite">0 of 6 answered</span>
             </div>
             <p class="form__note" style="margin-top:var(--s4)">No mailing list, no sequence. Just a reply from me.</p>
             <p class="form__note" style="margin-top:var(--s2)">
-              Rather just email? <a class="link-arrow" href="mailto:hello@marvinbalmaceda.com">hello@marvinbalmaceda.com</a>
+              Rather just email? <a class="link-arrow" href="mailto:balmacedamarvin@gmail.com">balmacedamarvin@gmail.com</a>
             </p>
           </form>

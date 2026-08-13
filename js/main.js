@@ -87,6 +87,69 @@
     $$('.work-card').forEach(function (c) { po.observe(c); });
   }
 
+  /* ---- Video facade -------------------------------------------------------
+     Reveals the poster overlay only once JS is available. The <video> keeps its
+     native controls throughout, so nothing here is load-bearing. */
+  $$('[data-vfacade]').forEach(function (wrap) {
+    var video = $('video', wrap);
+    var cover = $('.vfacade__cover', wrap);
+    if (!video || !cover) return;
+    cover.hidden = false;
+    cover.addEventListener('click', function () {
+      cover.hidden = true;
+      video.focus({ preventScroll: true });
+      var p = video.play();
+      /* Autoplay policies reject play() when it is not seen as a user gesture;
+         the controls are already visible, so failing here is harmless. */
+      if (p && p.catch) p.catch(function () {});
+    });
+    /* Bring the cover back when the clip finishes, so the section returns to a
+       composed state instead of a black frame. */
+    video.addEventListener('ended', function () { cover.hidden = false; });
+  });
+
+  /* ---- Timeline tabs ------------------------------------------------------
+     Full tablist semantics: roving tabindex, arrow/Home/End keys, and only the
+     selected panel exposed. Without JS the .is-tabbed class is never added and
+     every panel renders in sequence as a plain chronology. */
+  var tl = $('#timeline');
+  if (tl) {
+    /* Deliberately tl-prefixed. This file is one IIFE and `var` is
+       function-scoped, so a plain `panels` here is the SAME binding the
+       lightbox declares further down — by click time this closure would be
+       toggling lightbox sections instead of timeline panels. */
+    var tlTabs = $$('.tl__year', tl);
+    var tlPanels = $$('.tl__panel', tl);
+    if (tlTabs.length && tlTabs.length === tlPanels.length) {
+      tl.classList.add('is-tabbed');
+
+      var select = function (i, focus) {
+        tlTabs.forEach(function (t, n) {
+          t.setAttribute('aria-selected', String(n === i));
+          t.tabIndex = n === i ? 0 : -1;
+        });
+        tlPanels.forEach(function (p, n) { p.classList.toggle('is-active', n === i); });
+        if (focus) {
+          tlTabs[i].focus();
+          tlTabs[i].scrollIntoView({ inline: 'nearest', block: 'nearest',
+                                     behavior: reduced ? 'auto' : 'smooth' });
+        }
+      };
+
+      tlTabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () { select(i); });
+        tab.addEventListener('keydown', function (e) {
+          var last = tlTabs.length - 1, to = null;
+          if (e.key === 'ArrowRight') to = i === last ? 0 : i + 1;
+          else if (e.key === 'ArrowLeft') to = i === 0 ? last : i - 1;
+          else if (e.key === 'Home') to = 0;
+          else if (e.key === 'End') to = last;
+          if (to !== null) { e.preventDefault(); select(to, true); }
+        });
+      });
+    }
+  }
+
   /* ---- Gallery filter -----------------------------------------------------
      Toggles [hidden] on markup that is already in the document, so the names
      stay in the source for crawlers no matter which chip is active. */
@@ -122,7 +185,9 @@
   if (panels.length) {
     var openPanel = null;
     var lastFocus = null;
-    var order = $$('.work-card__link').map(function (a) { return a.dataset.piece; });
+    /* Order comes from the panels, not the cards: the marquee repeats each
+       piece, so a card-derived list would contain duplicates and break prev/next. */
+    var order = panels.map(function (p) { return p.id.replace(/^p-/, ''); });
 
     var rail = function (panel) {
       var sc = $('.lightbox__scroll', panel);
@@ -176,7 +241,7 @@
     };
 
     document.addEventListener('click', function (e) {
-      var link = e.target.closest && e.target.closest('.work-card__link');
+      var link = e.target.closest && e.target.closest('[data-piece]');
       if (link && link.dataset.piece) {
         if (open(link.dataset.piece, link)) e.preventDefault();
         return;
@@ -235,5 +300,87 @@
     form.addEventListener('input', update);
     form.addEventListener('change', update);
     update();
+
+    /* ---- Steps ------------------------------------------------------------
+       Pagination is switched on here rather than in the markup: if this script
+       never runs, every fieldset stays visible and the form still submits in
+       one POST with all fields present. */
+    var steps = $$('.step', form);
+    var marks = $$('.steps__item', form);
+    var back = $('#form-back'), next = $('#form-next'), send = $('#form-send');
+    var errBox = $('#form-error');
+
+    if (steps.length > 1 && back && next && send) {
+      var at = 0;
+      form.classList.add('is-stepped');
+      $('#steps').removeAttribute('aria-hidden');
+
+      var render = function () {
+        steps.forEach(function (s, i) { s.classList.toggle('is-active', i === at); });
+        marks.forEach(function (m, i) {
+          m.classList.toggle('is-current', i === at);
+          m.classList.toggle('is-done', i < at);
+        });
+        back.hidden = at === 0;
+        next.hidden = at === steps.length - 1;
+        send.hidden = at !== steps.length - 1;
+        if (errBox) errBox.hidden = true;
+      };
+
+      /* Native constraint validation, scoped to the visible step. reportValidity
+         on the whole form would try to focus a control inside a hidden fieldset,
+         which browsers refuse to do — the submit would fail silently. */
+      var stepValid = function () {
+        var fields = $$('input, select, textarea', steps[at]);
+        for (var i = 0; i < fields.length; i++) {
+          if (!fields[i].checkValidity()) {
+            fields[i].reportValidity();
+            return false;
+          }
+        }
+        /* The checkbox group has no native "one of" rule. */
+        if (at === 1 && !form.querySelector('[name=need]:checked')) {
+          if (errBox) {
+            errBox.textContent = 'Pick at least one thing you need — or "Not sure yet".';
+            errBox.hidden = false;
+          }
+          return false;
+        }
+        return true;
+      };
+
+      next.addEventListener('click', function () {
+        if (!stepValid()) return;
+        at = Math.min(at + 1, steps.length - 1);
+        render();
+        steps[at].scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+        var first = $('input, select, textarea', steps[at]);
+        if (first) first.focus({ preventScroll: true });
+      });
+
+      back.addEventListener('click', function () {
+        at = Math.max(at - 1, 0);
+        render();
+        steps[at].scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+      });
+
+      /* A field left invalid on an earlier step would otherwise block submit
+         with no visible cause, so jump back to whichever step actually fails. */
+      form.addEventListener('submit', function (e) {
+        for (var i = 0; i < steps.length; i++) {
+          var fields = $$('input, select, textarea', steps[i]);
+          for (var j = 0; j < fields.length; j++) {
+            if (!fields[j].checkValidity()) {
+              e.preventDefault();
+              at = i; render();
+              fields[j].reportValidity();
+              return;
+            }
+          }
+        }
+      });
+
+      render();
+    }
   }
 })();

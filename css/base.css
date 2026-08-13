@@ -31,6 +31,16 @@
   font-display: swap;
 }
 
+/* The signature script from the existing site. Used in exactly one place —
+   the "Hi, I'm" line — which is what keeps it a flourish rather than a theme. */
+@font-face {
+  font-family: "Quentin";
+  src: url("../fonts/quentin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Metric-matched fallbacks. Values derived from the real font tables
    (Archivo upm 1000 asc 878 desc -210; Schibsted upm 2048 asc 2000 desc -528)
    divided by the size-adjust ratio, so `swap` causes no layout shift. */
@@ -69,7 +79,10 @@ html {
 }
 
 body {
-  background: var(--bg-page);
+  /* Matches the footer, not the old floating-card ground: with the page radius
+     gone, over-scroll should reveal the footer's colour rather than a stray
+     navy band. */
+  background: var(--brand-deep);
   color: var(--text-primary);
   font-family: var(--font-text);
   font-size: var(--fs-body);
@@ -78,6 +91,11 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* Any class that sets `display` outranks the UA's `[hidden] { display: none }`,
+   so the attribute silently stops working — which is exactly what happened to
+   the stepped form's buttons. This restores it for every element. */
+[hidden] { display: none !important; }
 
 img, picture, video, canvas, svg { display: block; max-width: 100%; }
 input, button, textarea, select { font: inherit; color: inherit; }
@@ -145,11 +163,9 @@ a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .22em
 
 /* ---- Layout primitives --------------------------------------------------- */
 
-/* The page is a rounded card floating on a dark ground; the footer sits below
-   it on that ground. `overflow: clip` (not hidden) keeps position:sticky alive. */
+/* Full-bleed. `overflow: clip` (not hidden) keeps position:sticky alive. */
 .page {
   background: var(--bg-base);
-  border-radius: var(--r-lg);
   overflow: clip;
   isolation: isolate;
 }
@@ -195,6 +211,17 @@ a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .22em
 .section-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 .section-head h2 { max-width: 20ch; }
 .section-head .lede { margin-top: var(--s4); }
+
+/* Centred heading block — the reference's dominant rhythm. Everything is
+   centred as a unit, including the measure, so the text block stays optically
+   balanced instead of just being centre-aligned ragged text. */
+.section-head--mid {
+  text-align: center;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+.section-head--mid h2 { max-width: 22ch; margin-inline: auto; }
+.section-head--mid .lede { margin-inline: auto; }
 
 /* ---- Accessibility floor -------------------------------------------------- */
 

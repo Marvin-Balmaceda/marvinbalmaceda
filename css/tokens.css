@@ -16,53 +16,62 @@
 
 :root {
 
-  /* ---- Surfaces ---------------------------------------------------------- */
-  --bg-page:    light-dark(#0B0E14, #05070A);  /* ground the rounded page floats on */
-  --bg-base:    light-dark(#FFFFFF, #0B0E14);
-  --bg-tint:    light-dark(#EEF0F7, #11161D);  /* pale lavender-gray band */
-  --bg-warm:    light-dark(#FAF5EE, #15171C);  /* warm sand band */
-  --bg-card:    light-dark(#FFFFFF, #161C24);
-  --bg-inset:   light-dark(#F5F7FB, #11161D);  /* form wells, chips at rest */
+  /* ---- Palette -----------------------------------------------------------
+     Source: E4C59E sand / AF8260 camel / 803D3B brick / 322C2B cocoa.
+     Roles are assigned by luminance, not by preference: cocoa is the only one
+     dark enough to set body text, brick is the only mid-tone that clears 4.5:1
+     on a light ground, and camel measures just 3.32:1 as text — so camel is
+     fenced to rules, borders and UI edges and never sets prose. Every ratio in
+     the comments is computed. */
+  --sand:  #E4C59E;
+  --camel: #AF8260;
+  --brick: #803D3B;
+  --cocoa: #322C2B;
 
-  /* The ink band is near-constant across themes on purpose. The gallery and
-     footer are the one place ~100 unrelated client brand palettes compete, so
-     they stay tuned for that job and the theme toggle cannot break them. */
-  --bg-ink:         light-dark(#0F131B, #05070A);
-  --ink-text:       #F2EDE4;
-  --ink-text-dim:   #A7ADB6;
-  --ink-hairline:   light-dark(#232B36, #1B2128);
-  --ink-border:     light-dark(#333D4B, #2B3441);
+  /* ---- Surfaces ---------------------------------------------------------- */
+  --bg-base:    light-dark(#FFFCF8, #1B1717);   /* warm white, not pure white */
+  --bg-tint:    light-dark(#F4EBDF, #232020);   /* sand tint band */
+  --bg-warm:    light-dark(#EFE3D2, #262120);   /* deeper sand band */
+  --bg-card:    light-dark(#FFFFFF, #262221);
+  --bg-inset:   light-dark(#F8F2EA, #201C1B);   /* form wells, chips at rest */
+
+  /* The deep band — Trusted By and the footer. Constant across themes: in
+     light it reads as a dark bar, in dark it sits just ABOVE the page ground
+     so it still separates instead of disappearing. */
+  --bg-ink:         #322C2B;
+  --brand-deep:     #322C2B;
+  --ink-text:       #F3E7D6;
+  --ink-text-dim:   #C9A177;                    /* 5.78:1 on cocoa */
+  --ink-hairline:   rgba(228, 197, 158, .16);
+  --ink-border:     rgba(228, 197, 158, .28);
 
   /* ---- Text -------------------------------------------------------------- */
-  --text-primary:   light-dark(#12161F, #F2EDE4);  /* 18.10:1 / 16.57:1 */
-  --text-secondary: light-dark(#5B6472, #A7ADB6);  /*  5.99:1 /  8.62:1 — the two-tone gray */
-  --text-muted:     light-dark(#6E7684, #858D99);  /*  4.58:1 /  5.98:1 — both pass AA */
-  --text-on-accent: light-dark(#12161F, #0B0E14);  /*  6.33:1 on --accent */
+  --text-primary:   light-dark(#322C2B, #EDE0CE);  /* 13.41:1 / 13.67:1 */
+  --text-secondary: light-dark(#5C5250, #B9AAA3);  /*  7.39:1 /  7.91:1 */
+  --text-muted:     light-dark(#6B605D, #9A8B84);  /*  5.94:1 /  5.42:1 */
+  --text-on-accent: light-dark(#FFFFFF, #322C2B);  /*  7.93:1 /  6.42:1 */
 
-  /* ---- Lines ------------------------------------------------------------- */
-  --border-hairline: light-dark(#E4E7EF, #1B2128);
-  --border-default:  light-dark(#D3D8E4, #303A46);
-  --border-strong:   light-dark(#B4BCCC, #46525F);
-  --focus-ring:      light-dark(#9A5B12, #E8B563);
+  /* ---- Lines — camel lives here, where 3.32:1 is fine ---------------------- */
+  --border-hairline: light-dark(#EADFD0, #2C2726);
+  --border-default:  light-dark(#DCCBB4, #3A3331);
+  --border-strong:   light-dark(#AF8260, #554945);
+  --focus-ring:      light-dark(#803D3B, #D9A87A);
 
-  /* ---- Accent ------------------------------------------------------------
-     Amber fails as text on white — #D4881F measures 2.86:1, the classic
-     warm-accent trap. So amber FILLS, and a burnt variant SETS TYPE.
-     On dark the constraint lifts, so both roles use the brighter cut. */
-  --accent:       light-dark(#D4881F, #E0A954);   /* fills, rules, graphics */
-  --accent-text:  light-dark(#9A5B12, #E8B563);   /* 5.41:1 / 10.1:1 — accent WORDS */
-  --accent-hover: light-dark(#B87415, #EFBE74);
-  --accent-wash:  light-dark(rgba(212,136,31,.10), rgba(224,169,84,.10));
-  --accent-veil:  light-dark(rgba(212,136,31,.22), rgba(224,169,84,.24));
+  /* ---- Accent ------------------------------------------------------------ */
+  --accent:       light-dark(#803D3B, #D9A87A);   /* 7.75:1 / 8.32:1 as text */
+  --accent-text:  light-dark(#803D3B, #D9A87A);
+  --accent-hover: light-dark(#6A3230, #E7BE96);
+  --accent-wash:  light-dark(rgba(128,61,59,.07), rgba(217,168,122,.10));
+  --accent-veil:  light-dark(rgba(128,61,59,.24), rgba(217,168,122,.28));
 
-  --state-error:  light-dark(#B3341F, #E08A7A);
-  --state-valid:  light-dark(#2F6B4F, #7FB79A);
+  --state-error:  light-dark(#8C2F26, #E0A197);
+  --state-valid:  light-dark(#3E6B4F, #93C0A2);
 
-  --grad-warm: linear-gradient(112deg, #F6B44C 0%, #E4602E 100%);
+  --grad-warm: linear-gradient(112deg, #AF8260 0%, #803D3B 60%, #322C2B 100%);
   --glow-warm: radial-gradient(58% 54% at 76% 40%,
-                 light-dark(rgba(246,180,76,.22), rgba(246,180,76,.15)) 0%,
-                 light-dark(rgba(228,96,46,.10),  rgba(228,96,46,.075)) 42%,
-                 rgba(228, 96, 46, 0) 72%);
+                 light-dark(rgba(175,130,96,.16), rgba(217,168,122,.10)) 0%,
+                 light-dark(rgba(128,61,59,.07),  rgba(128,61,59,.08)) 42%,
+                 rgba(128, 61, 59, 0) 72%);
 
   /* ---- Elevation ---------------------------------------------------------
      Shadows barely read on dark, so the dark values fade to near-nothing and
@@ -83,6 +92,7 @@
   --font-display: "Archivo", "Archivo Fallback", system-ui, sans-serif;
   --font-text:    "Schibsted Grotesk", "Schibsted Fallback", system-ui, sans-serif;
   --font-mono:    "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-script:  "Quentin", "Segoe Script", cursive;
 
   --fs-xl:    clamp(2.35rem, 5.5vw, 4.25rem);
   --fs-l:     clamp(1.85rem, 3.6vw, 2.9rem);

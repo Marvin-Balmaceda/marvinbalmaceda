@@ -3,115 +3,650 @@
    ========================================================================== */
 
 /* ---- Hero ----------------------------------------------------------------
-   Signature #2. The oversized name runs the full width and bleeds off both
-   edges; the work card sits on top and occludes it. The occlusion is the whole
-   idea — and it happens to be the thesis rendered literally: his name sits
-   behind the work that carries someone else's. */
+   Type left, portrait right, on a pale faceted ground. The name is set solid
+   rather than ghosted: at this weight it is the loudest thing on the page and
+   does not need an effect to carry. */
+
+/* Every value below is derived from the reference mock (2506x1616) and
+   expressed in vw, so the composition holds at any width rather than only at
+   the size it was drawn. Comments give the measured source figure. */
 
 .hero {
   position: relative;
   overflow: clip;
-  padding-block: clamp(2.5rem, 6vw, 4.5rem) 0;
+  isolation: isolate;
+  margin-top: calc(-1 * var(--nav-h));
+  padding-top: var(--nav-h);
+  min-height: min(64.5vw, 940px);       /* the mock's 1616/2506 aspect */
+  display: flex;
+  align-items: center;
+  background: light-dark(#F2EBE1, #1F1B1A);   /* warm sand-white, not the old cool grey */
 }
 
-.hero__glow {
+.hero__facets {
   position: absolute;
-  inset: -20% -10% auto -10%;
-  height: 130%;
-  background: var(--glow-warm);
-  pointer-events: none;
+  inset: 0;
   z-index: 0;
-}
-
-.hero__ghost {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(1.25rem, 3vw, 2.5rem);
-  transform: translateX(-50%);
-  z-index: 1;
-  font-family: var(--font-display);
-  /* Sized so the full name lands with only a slight bleed past each edge.
-     Any larger and it stops reading as a name and becomes abstract stripes. */
-  font-size: clamp(2.25rem, 8.8vw, 7.75rem);
-  font-weight: 700;
-  font-stretch: 118%;
-  letter-spacing: -.045em;
-  line-height: .78;
-  white-space: nowrap;
-  user-select: none;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  background: var(--grad-warm);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  opacity: light-dark(.85, .62);
+  /* The polygons are drawn in currentColor at low opacity, so one value tunes
+     the whole facet field — grey on the pale ground, white on the dark one. */
+  color: light-dark(#8A7461, #E4C59E);        /* facets tint with the palette */
+  opacity: light-dark(1, .30);
 }
 
 .hero__inner {
   position: relative;
   z-index: 2;
+  width: 100%;
   display: grid;
-  gap: clamp(2.5rem, 5vw, 4rem);
-  align-items: end;
-  /* Clears the ghosted name, which sits behind and below this column. */
-  padding-bottom: clamp(6rem, 13vw, 11rem);
+  align-items: center;
 }
-@media (min-width: 940px) {
-  .hero__inner { grid-template-columns: 7fr 5fr; }
+@media (min-width: 900px) {
+  /* Text occupies the left half. Measured, not guessed: at 46% the column came
+     out 541px and "BALMACEDA" broke onto a third line. */
+  .hero__inner { grid-template-columns: 50% 50%; }
 }
 
-.hero h1 {
-  font-size: clamp(2.25rem, 4.6vw, 3.6rem);
-  margin-bottom: var(--s6);
-  max-width: 15ch;
+/* The one script flourish on the site. */
+.hero__hi {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 5.6vw, 4.4rem);
+  line-height: 1;
+  /* Brick, so the hero carries two palette tones rather than one: the script
+     warms up, the name below stays cocoa and holds the weight. */
+  color: light-dark(#803D3B, #D9A87A);
+  margin-bottom: .12em;
 }
-.hero .lede { margin-bottom: var(--s8); max-width: 46ch; }
 
-/* Numbered roles. The numbers earn their place: three parallel titles read as
-   a set, and the (01) form is the references' own idiom. */
-.roles {
+.hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6.94vw, 5.85rem);   /* 174px of 2506, capped so the
+                                                  longer line still sets on one */
+  font-weight: 700;
+  font-stretch: 100%;
+  line-height: .75;                            /* 130px advance on a 174px face */
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+  /* Solid maroon on the pale ground; flips to bone on dark, where maroon is
+     unreadable at any weight. */
+  color: light-dark(#322C2B, #F3E7D6);
+  margin-bottom: .34em;
+}
+
+.hero__roles {
+  display: flex;
+  align-items: center;
+  gap: .7em;
+  font-family: var(--font-text);
+  font-size: clamp(.8125rem, 1.12vw, 1rem);
+  font-weight: 700;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+  color: light-dark(#4A4240, #B9AAA3);
+  margin-bottom: clamp(1.5rem, 3.4vw, 3rem);
+}
+/* The mock separates the two roles with a small solid tick, not a bullet. */
+.hero__roles i {
+  flex: none;
+  width: 3px;
+  height: 1em;
+  background: currentColor;
+  opacity: .75;
+}
+
+.hero__tagline {
+  font-size: clamp(1rem, 1.35vw, 1.2rem);   /* eased down from 1.6vw / 1.45rem */
+  line-height: 1.5;
+  color: light-dark(#4A4240, #B9AAA3);
+  max-width: 22ch;
+  margin-bottom: clamp(1.5rem, 3.2vw, 2.75rem);
+}
+
+/* The mock uses underlined text links, not buttons. */
+.hero__links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s2) var(--s6);
-  margin-bottom: var(--s8);
-  padding: 0;
-  list-style: none;
+  align-items: center;
+  gap: .55em 1.1em;
+  font-size: clamp(.75rem, .95vw, .875rem);   /* eased down from 1.12vw / 1rem */
+  letter-spacing: .045em;
+  text-transform: uppercase;
+  color: light-dark(#6B605D, #9A8B84);
 }
-.roles li {
+.hero__links a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: .28em;
+  text-decoration-thickness: 1px;
+  transition: color var(--t-micro) var(--e-state);
+}
+.hero__links a:hover { color: light-dark(#803D3B, #D9A87A); }
+.hero__links i { font-style: normal; opacity: .65; }
+
+.hero__figure {
+  position: relative;
+  align-self: stretch;
   display: flex;
-  align-items: baseline;
-  gap: .5rem;
-  font-size: var(--fs-sm);
-  font-style: italic;
-  color: var(--text-secondary);
+  align-items: flex-end;
+  justify-content: center;
+  /* Reclaims the nav's padding so the figure spans the full hero box and the
+     head sits under the transparent nav, as it does in the mock. Without this
+     the hero grows by exactly the nav height. */
+  margin-top: calc(-1 * var(--nav-h));
 }
-.roles span {
-  font-family: var(--font-mono);
-  font-style: normal;
-  font-size: var(--fs-micro);
-  color: var(--accent-text);
-}
-
-.hero__cta { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
-
-/* The hero's work card sits above the ghost name and bleeds past the section's
-   bottom edge — the bleed itself says the page is taller than the screen. */
-.hero__figure { position: relative; }
-.hero__figure .work-card { margin-bottom: clamp(-5rem, -6vw, -3rem); }
-@media (max-width: 939px) {
-  .hero__figure { max-width: 340px; }
-  .hero__figure .work-card { margin-bottom: 0; }
-}
-
-/* Portrait slot — used once the commissioned cutout arrives. Kept here so the
-   swap is a markup change, not a redesign. */
 .hero__portrait {
+  display: block;
+  width: auto;
+  height: min(64.5vw, 940px);      /* matches the hero box, so the figure lands
+                                      at the mock's 523x929 at a 1440 viewport */
+  max-width: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  /* Nudged below the nav so the links stay legible over the head. The size is
+     unchanged from the mock — the surplus crops at the bottom, where the mock
+     cuts the figure off regardless. */
+  position: relative;
+  top: calc(var(--nav-h) + 8px);
+}
+
+@media (max-width: 899px) {
+  .hero { min-height: 0; align-items: stretch; padding-bottom: 0; }
+  .hero__inner { grid-template-columns: 1fr; padding-top: var(--s8); }
+  .hero__name { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .hero__hi { font-size: clamp(2rem, 10vw, 3.2rem); }
+  .hero__tagline { max-width: none; }
+  .hero__figure { margin-top: var(--s8); }
+  .hero__portrait { height: clamp(300px, 78vw, 460px); max-height: none; }
+}
+
+/* The flagship card beside the intro copy. Capped, because at full height it
+   strands the text column against a tall column of white. */
+#flagship .split-7-5 { align-items: center; }
+#flagship .hero__figure {
+  max-width: 360px;
+  margin-inline: auto;
+  height: auto;
+}
+
+/* ---- Trusted by ----------------------------------------------------------
+   Real client marks on the brand band. This is the one place logos beat type:
+   these six are recognisable as shapes, and they are the client's own assets. */
+
+/* Redesigned as an asymmetric band rather than a centred logo strip. Two
+   reasons: every other section on the page is centred, so this breaks the
+   rhythm and stops the page reading as one long column; and pairing the marks
+   with a hard number turns decoration into evidence — six logos say "some
+   clients", "six of seventy-nine since 2014" says something checkable. */
+
+.trusted {
+  background: var(--brand-deep);
+  color: var(--ink-text);
+  overflow: hidden;
+}
+.trusted__inner {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .trusted__inner { grid-template-columns: auto 1fr; }
+}
+
+.trusted__claim { display: flex; flex-direction: column; gap: .35rem; }
+.trusted__claim h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -.025em;
+  line-height: 1.1;
+  color: var(--ink-text);
+}
+.trusted__claim span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-text-dim);
+}
+
+/* Hairline-separated cells give the marks a shared baseline and a measured
+   rhythm — closer to a colophon than a logo soup. */
+.trusted__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+.trusted__row li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding-inline: clamp(.5rem, 1.4vw, 1.25rem);
+  border-left: 1px solid rgba(242, 237, 228, .16);
+}
+.trusted__row li:first-child { border-left: 0; }
+.trusted__row img {
+  height: clamp(19px, 2.1vw, 27px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  /* Flattened to one tone so six unrelated logo palettes read as a set rather
+     than six competing brands. */
+  filter: brightness(0) invert(1);
+  opacity: .82;
+  transition: opacity var(--t-micro) var(--e-state);
+}
+.trusted__row li:hover img { opacity: 1; }
+
+@media (max-width: 620px) {
+  .trusted__row { grid-template-columns: repeat(3, 1fr); gap: var(--s4); }
+  .trusted__row li { border-left: 0; }
+}
+
+/* ---- Tools marquee -------------------------------------------------------
+   Two rows drifting in opposite directions. Same track mechanic as the work
+   wall (sequence duplicated, translate -50%), without the rotation — these are
+   wordmarks and must stay level to be readable. */
+
+.tools { overflow: hidden; }
+.tools__rows { display: grid; gap: clamp(1rem, 2vw, 1.5rem); margin-top: clamp(2rem, 4vw, 3rem); }
+
+.tools__row {
+  display: flex;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+.tools__track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  will-change: transform;
+}
+.tools__track--left  { animation: mq-left  var(--speed) linear infinite; }
+.tools__track--right { animation: mq-right var(--speed) linear infinite; }
+.tools__row:hover .tools__track { animation-play-state: paused; }
+
+.tools__track li {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(150px, 15vw, 200px);
+  height: clamp(64px, 7vw, 88px);
+  padding-inline: var(--s6);
+}
+.tools__track img {
+  max-height: clamp(26px, 2.6vw, 34px);
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  /* brightness(0), not grayscale(1). Grayscale keeps each logo's own luminance,
+     so a pale mark like Shopify all but vanishes next to a black one like
+     Elementor. Flattening to a single tone and letting opacity set the weight
+     makes twenty unrelated marks read as one set. True colour on hover. */
+  filter: brightness(0);
+  opacity: .45;
+  transition: filter var(--t-state) var(--e-state), opacity var(--t-state) var(--e-state);
+}
+/* filter has no light-dark() equivalent, so the dark case needs both the
+   explicit toggle and the OS-preference fallback. */
+[data-theme="dark"] .tools__track img { filter: brightness(0) invert(1); opacity: .55; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tools__track img { filter: brightness(0) invert(1); opacity: .55; }
+}
+.tools__track li:hover img,
+[data-theme="dark"] .tools__track li:hover img { filter: none; opacity: 1; }
+
+.tools__note {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+  font-size: var(--fs-lede);
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tools__row { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
+  .tools__track { animation: none; }
+}
+
+/* ---- Diagonal marquee wall ------------------------------------------------
+   Vanilla port of the React DiagonalMarqueeCarousel. Five rows on a -25deg
+   rotation, alternating direction, staggered speeds, hover to pause. Pure CSS
+   animation — the original needed React only to template the rows. */
+
+.mq-wall {
+  position: relative;
+  width: 100%;
+  height: min(88vh, 820px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tint);
+}
+
+.mq-wall__rows {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 220vw;                 /* over-wide so the rotation never exposes an end */
+  transform: rotate(-25deg);
+}
+
+.mq-row { display: flex; width: 100%; overflow: hidden; }
+
+.mq-track {
+  display: flex;
+  flex-shrink: 0;
+  will-change: transform;
+}
+/* The track holds the sequence twice, so translating exactly -50% lands on an
+   identical frame and the loop is seamless. */
+.mq-track--left  { animation: mq-left  var(--speed) linear infinite; }
+.mq-track--right { animation: mq-right var(--speed) linear infinite; }
+
+@keyframes mq-left {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes mq-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+/* Pause the row you are pointing at, so a card can actually be clicked. */
+.mq-row:hover .mq-track,
+.mq-row:focus-within .mq-track { animation-play-state: paused; }
+
+.mq-card {
+  position: relative;
+  flex: none;
+  width: 400px;
+  height: 300px;
+  margin-right: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .45);
+  text-decoration: none;
+  transition: transform var(--t-state) var(--e-state),
+              box-shadow var(--t-state) var(--e-state);
+}
+.mq-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Top, not centre: these are tall boards, and the hero area is the part worth
+     showing. object-fit alone would crop to the middle of a 2,000px board. */
+  object-position: top;
+}
+/* The component ships bg-black/40, which suits the decorative stock photos it
+   was demoed with. At 40% it buries actual portfolio work, so this sits at 22%
+   for cohesion and clears almost entirely on hover. */
+.mq-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .22);
+  transition: background var(--t-state) var(--e-state);
+}
+.mq-card:hover, .mq-card:focus-visible {
+  transform: scale(1.03);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, .6);
+}
+.mq-card:hover::after, .mq-card:focus-visible::after { background: rgba(0, 0, 0, .04); }
+
+.mq-card__label {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  padding: 2.5rem .9rem .8rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #F3E7D6;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .7));
+  opacity: 0;
+  transition: opacity var(--t-state) var(--e-state);
+}
+.mq-card:hover .mq-card__label,
+.mq-card:focus-visible .mq-card__label { opacity: 1; }
+
+/* Edge fades, in the section's own ground colour. */
+.mq-wall__fade {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  z-index: 10;
+  height: 25%;
+}
+.mq-wall__fade--top    { top: 0;    background: linear-gradient(180deg, var(--bg-tint), transparent); }
+.mq-wall__fade--bottom { bottom: 0; background: linear-gradient(0deg,   var(--bg-tint), transparent); }
+
+@media (max-width: 700px) {
+  .mq-wall { height: min(70vh, 520px); }
+  .mq-card { width: 260px; height: 195px; margin-right: 1rem; }
+  .mq-wall__rows { gap: 1rem; width: 300vw; }
+}
+
+/* Reduced motion: stop the animation and un-rotate, then let each row scroll
+   by hand. Freezing the rows in place would strand most cards off-screen. */
+@media (prefers-reduced-motion: reduce) {
+  .mq-wall { height: auto; padding-block: var(--s8); }
+  .mq-wall__rows {
+    position: static;
+    transform: none;
+    width: 100%;
+    gap: var(--s4);
+  }
+  .mq-row { overflow-x: auto; scrollbar-width: thin; }
+  .mq-track { animation: none; }
+  .mq-wall__fade { display: none; }
+}
+
+/* ---- Video facade --------------------------------------------------------
+   The <video> keeps preload="none" and its native controls, so with JS off it
+   is an ordinary working player. JS reveals the poster overlay on top — which
+   is why the button ships `hidden` rather than being added at runtime. */
+
+.vfacade {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16 / 9;
+  box-shadow: var(--shadow-lg);
+}
+.vfacade video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.vfacade__cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.vfacade__cover img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;              /* below the scrim */
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+/* z-index matters here: ::before is generated as the FIRST child, so without
+   it the real <img> that follows paints straight over the scrim and the caption
+   ends up sitting on the raw poster. */
+.vfacade__cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Weighted hard to the bottom: the caption sits there and the poster frame
+     happens to be bright behind it, so a flat scrim left the name unreadable. */
+  background: linear-gradient(180deg,
+    rgba(0, 0, 0, .10) 0%, rgba(0, 0, 0, .18) 40%,
+    rgba(50, 44, 43, .62) 72%, rgba(50, 44, 43, .90) 100%);
+  transition: opacity var(--t-state) var(--e-state);
+}
+.vfacade__cover:hover::before { opacity: .85; }
+
+.vfacade__play {
   position: relative;
   z-index: 2;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, .28));
+  display: grid;
+  place-items: center;
+  width: clamp(64px, 7vw, 88px);
+  height: clamp(64px, 7vw, 88px);
+  border-radius: var(--r-pill);
+  background: rgba(242, 237, 228, .94);
+  color: var(--brand-deep);
+  transition: transform var(--t-state) var(--e-enter), background var(--t-state) var(--e-state);
 }
+.vfacade__cover:hover .vfacade__play { transform: scale(1.08); background: #FFF; }
+.vfacade__play svg { width: 34%; height: 34%; fill: currentColor; margin-left: 8%; }
+
+.vfacade__caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  text-align: left;
+  color: #F3E7D6;
+}
+.vfacade__caption strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+.vfacade__caption span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: .8;
+}
+
+/* ---- Interactive timeline ------------------------------------------------
+   A real tablist: arrow keys move between years, and only the selected panel
+   is in the accessibility tree. Without JS every panel renders in sequence, so
+   the section degrades to a plain chronological list. */
+
+.tl__rail {
+  position: relative;
+  display: flex;
+  /* `safe` centre: centres while it fits, but falls back to start alignment
+     once the rail overflows, so the first year can still be scrolled to. */
+  justify-content: safe center;
+  gap: clamp(.75rem, 2.5vw, 2rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: var(--s6);
+  margin-bottom: var(--s8);
+}
+.tl__rail::-webkit-scrollbar { display: none; }
+/* The spine the markers sit on. */
+.tl__rail::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--border-default);
+}
+
+.tl__year {
+  position: relative;
+  flex: none;
+  padding: 0 0 var(--s4);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--fs-data);
+  letter-spacing: .06em;
+  color: var(--text-muted);
+  transition: color var(--t-state) var(--e-state);
+}
+.tl__year::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: -4px;
+  width: 9px; height: 9px;
+  transform: translateX(-50%);
+  border-radius: var(--r-pill);
+  background: var(--border-default);
+  border: 2px solid var(--bg-tint);
+  transition: background var(--t-state) var(--e-state), transform var(--t-state) var(--e-enter);
+}
+.tl__year:hover { color: var(--text-primary); }
+.tl__year[aria-selected="true"] { color: var(--accent-text); font-weight: 600; }
+.tl__year[aria-selected="true"]::after {
+  background: var(--brand-deep);
+  transform: translateX(-50%) scale(1.4);
+}
+
+.tl__panel { max-width: 62ch; margin-inline: auto; }
+.tl__panel h3 {
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  margin-bottom: var(--s3);
+}
+.tl__panel p { color: var(--text-secondary); }
+.tl__panel .micro { display: block; margin-bottom: var(--s3); color: var(--accent-text); }
+
+/* JS-only. Without .is-tabbed every panel stays visible in order. */
+.is-tabbed .tl__panel { display: none; }
+.is-tabbed .tl__panel.is-active { display: block; animation: tl-in var(--t-enter) var(--e-enter); }
+@keyframes tl-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .is-tabbed .tl__panel.is-active { animation: none; }
+}
+/* No-JS: the year buttons do nothing, so present them as plain labels. */
+html:not(.js) .tl__year { cursor: default; }
+html:not(.js) .tl__panel { margin-bottom: var(--s8); }
+
+/* ---- Testimonials -------------------------------------------------------- */
+
+.testi-grid {
+  display: grid;
+  gap: var(--s6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.testi {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--r-md);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm), var(--inset-top);
+}
+.testi blockquote { margin: 0 0 var(--s6); color: var(--text-secondary); flex: 1; }
+.testi blockquote p { margin: 0; }
+.testi__mark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: .6;
+  color: var(--accent);
+  opacity: .35;
+  margin-bottom: var(--s3);
+}
+.testi__who { border-top: 1px solid var(--border-hairline); padding-top: var(--s4); }
+.testi__who strong { display: block; font-size: var(--fs-body); }
+.testi__who span { font-size: var(--fs-sm); color: var(--text-muted); }
 
 /* ---- Stat row ------------------------------------------------------------ */
 
@@ -318,7 +853,7 @@
   color: var(--accent-text);
 }
 
-.form__submit {
+.form__nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -327,66 +862,126 @@
   border-top: 1px solid var(--border-hairline);
 }
 .form__count { font-family: var(--font-mono); font-size: var(--fs-data);
-               letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+               letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted);
+               margin-left: auto; }
 .form__note  { font-size: var(--fs-sm); color: var(--text-muted); }
-
-/* ---- Footer -------------------------------------------------------------
-   Sits on the dark ground BELOW the rounded page card, exactly as the
-   references do — which is also why the ink band needs no theme variant. */
-
-.footer { background: var(--bg-page); color: var(--ink-text); position: relative; overflow: clip; }
-.footer__glow { position: absolute; inset: auto -10% -40% -10%; height: 70%;
-                background: var(--glow-warm); pointer-events: none; }
-.footer__inner { position: relative; z-index: 1; padding-block: var(--s16) var(--s8); }
-
-/* Marquee: a duplicated track translated by exactly -50%, so the loop is
-   seamless. Pure CSS, no library, and it stops under reduced motion. */
-.marquee {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  padding-block: var(--s8);
-  border-top: 1px solid var(--ink-hairline);
-  border-bottom: 1px solid var(--ink-hairline);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+.form__error {
+  margin-top: var(--s4);
+  padding: var(--s3) var(--s4);
+  border-left: 2px solid var(--state-error);
+  background: var(--bg-inset);
+  color: var(--state-error);
+  font-size: var(--fs-sm);
 }
-.marquee__track {
+
+/* ---- Stepped form --------------------------------------------------------
+   Only paginated once JS confirms it can validate a step before advancing.
+   Without JS every fieldset stays visible and the form submits in one go — the
+   Netlify POST is identical either way, so no field can be lost. */
+
+.steps {
   display: flex;
-  width: max-content;
-  animation: marquee 34s linear infinite;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s6);
+  margin-bottom: var(--s8);
+  padding: 0;
+  list-style: none;
 }
-.marquee__track span {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
-  font-weight: 700;
-  font-stretch: 115%;
-  letter-spacing: -.035em;
-  line-height: 1;
-  padding-right: .5em;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--ink-border);
+.steps__item {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  transition: color var(--t-state) var(--e-state);
 }
-.marquee__track span:nth-child(even) { color: var(--ink-text); -webkit-text-stroke: 0; }
-
-@keyframes marquee { to { transform: translateX(-50%); } }
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee__track { animation: none; }
-}
-
-.footer__grid {
+.steps__item span {
   display: grid;
-  gap: var(--s8);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  place-items: center;
+  width: 26px; height: 26px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  transition: background var(--t-state) var(--e-state),
+              border-color var(--t-state) var(--e-state),
+              color var(--t-state) var(--e-state);
 }
-.footer h2 { font-size: var(--fs-m); margin-bottom: var(--s3); }
-.footer a { color: var(--ink-text-dim); text-decoration: none; }
-.footer a:hover { color: var(--accent); }
-.footer__nav { display: grid; gap: var(--s2); list-style: none; padding: 0; }
+.steps__item.is-current { color: var(--text-primary); font-weight: 600; }
+.steps__item.is-current span {
+  background: var(--brand-deep);
+  border-color: var(--brand-deep);
+  color: #FFF;
+}
+.steps__item.is-done span {
+  background: var(--accent-wash);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+/* Applied by JS only. The selector is scoped to .is-stepped so the no-JS path
+   never hides a fieldset it cannot bring back. */
+.is-stepped .step { display: none; }
+.is-stepped .step.is-active { display: block; }
+.is-stepped .steps { display: flex; }
+
+/* Centred variant: the form column sits under the section title rather than
+   beside it, so the whole block reads as one centred unit. */
+.inquiry--mid {
+  max-width: 44rem;
+  margin-inline: auto;
+  text-align: left;
+}
+@media (min-width: 720px) {
+  .inquiry--mid { padding-left: var(--s8); }
+}
+
+/* ---- Footer --------------------------------------------------------------
+   Stripped to two rows. The marquee, the glow and the three-column link grid
+   all went: by this point the page has already made its case, and a loud
+   footer competes with the inquiry form immediately above it. Bookends the
+   Trusted By band by sitting on the same brand maroon. */
+
+.footer {
+  background: var(--brand-deep);
+  color: var(--ink-text);
+}
+.footer__inner { padding-block: clamp(2.5rem, 5vw, 3.5rem); }
+
+.footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s4) var(--s8);
+}
+.footer__mark {
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  text-decoration: none;
+  color: var(--ink-text);
+}
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s6);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--fs-sm);
+}
+.footer a { color: var(--ink-text-dim); text-decoration: none;
+            transition: color var(--t-micro) var(--e-state); }
+.footer a:hover { color: var(--ink-text); }
+
 .footer__base {
-  display: flex; flex-wrap: wrap; gap: var(--s4); justify-content: space-between;
-  margin-top: var(--s12); padding-top: var(--s6);
-  border-top: 1px solid var(--ink-hairline);
+  text-align: center;
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  padding-top: var(--s6);
+  border-top: 1px solid rgba(242, 237, 228, .14);
   color: var(--ink-text-dim);
 }
+.footer__base a { color: var(--ink-text); }
+

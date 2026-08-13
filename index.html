@@ -65,16 +65,22 @@
       }
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://marvinbalmaceda.com/#faq",
-      "mainEntity": [
-        { "@type": "Question", "name": "How do you price a project?", "acceptedAnswer": { "@type": "Answer", "text": "Every project is a fixed fee against a written scope, quoted after one short conversation. You know the number before anything starts. If the scope changes I send a change note with a new number before I build it." } },
-        { "@type": "Question", "name": "How long does a typical project take?", "acceptedAnswer": { "@type": "Answer", "text": "A landing page or order form is usually days. A full brand site is three to six weeks depending on how settled the design is. A membership or course build runs longer because the testing matters more than the building." } },
-        { "@type": "Question", "name": "Do you work with my existing designer?", "acceptedAnswer": { "@type": "Answer", "text": "Often. A large share of my work is building someone else's design faithfully — Figma, XD or Photoshop. I flag the places a design will fight the platform before I start, not after." } },
-        { "@type": "Question", "name": "What if my site is already built?", "acceptedAnswer": { "@type": "Answer", "text": "Then it is a rebuild, a rescue or a care plan. I audit what is there first and tell you which of the three it actually is, even when that is the smaller job." } },
-        { "@type": "Question", "name": "Do you work with US timezones?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I am in Manila, UTC+8, and I hold a daily overlap with US teams. Most clients have never found the timezone to be the constraint." } },
-        { "@type": "Question", "name": "What happens after launch?", "acceptedAnswer": { "@type": "Answer", "text": "Either I hand over documented and you take it from there, or I stay on a flat monthly retainer for updates, backups, speed and tracking. Both are fine. Neither is automatic." } }
-      ]
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://marvinbalmaceda.com/#practice" },
+      "author": { "@type": "Person", "name": "Nikky Kho" },
+      "reviewBody": "Marvin is an expert at his craft and his timeliness is superior. I highly recommend him to anyone interested in his website and integration skills. He is also a great person to work with and a wonderful communicator."
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://marvinbalmaceda.com/#practice" },
+      "author": { "@type": "Person", "name": "Phil Neil" },
+      "reviewBody": "Working with Marvin has been seamless. He's not just technically solid — he's proactive, responsive and solution-oriented. I never had to follow up or micro-manage."
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://marvinbalmaceda.com/#practice" },
+      "author": { "@type": "Person", "name": "Gareth Herman" },
+      "reviewBody": "I am very happy with the website that Marvin and his team built for me. I was most impressed with the speed of iteration. Marvin is an excellent communicator and got the project done on budget and on time. Highly recommend."
     }
   ]
 }
@@ -114,373 +120,1251 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero">
-      <div class="hero__glow" aria-hidden="true"></div>
-      <span class="hero__ghost" aria-hidden="true">MARVIN BALMACEDA</span>
+      <!-- Faceted ground, traced from the mock. preserveAspectRatio="none" lets
+           the polygons stretch with the viewport instead of letterboxing. -->
+      <svg class="hero__facets" viewBox="0 0 2506 1616" preserveAspectRatio="none"
+           aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <polygon points="0,0 470,0 250,470 0,300"        opacity=".05"/>
+          <polygon points="470,0 1180,0 690,560 250,470"   opacity=".10"/>
+          <polygon points="1180,0 1700,0 1290,330 690,560" opacity=".04"/>
+          <polygon points="1700,0 2506,0 2506,250 1290,330" opacity=".08"/>
+          <polygon points="0,300 250,470 0,980"            opacity=".07"/>
+          <polygon points="250,470 690,560 640,1180 0,980" opacity=".03"/>
+          <polygon points="2506,250 2506,860 1810,700"     opacity=".05"/>
+          <polygon points="1810,700 2506,860 2506,1240"    opacity=".09"/>
+          <polygon points="0,980 640,1180 300,1616 0,1616" opacity=".06"/>
+          <polygon points="640,1180 1240,1420 900,1616 300,1616" opacity=".03"/>
+          <polygon points="2140,1290 2506,1240 2506,1616 1900,1616" opacity=".05"/>
+        </g>
+      </svg>
 
       <div class="wrap hero__inner">
         <div class="hero__type">
-          <ol class="roles">
-            <li><span>(01)</span> <em>Web developer</em></li>
-            <li><span>(02)</span> <em>Funnel builder</em></li>
-            <li><span>(03)</span> <em>Launch partner</em></li>
-          </ol>
-          <h1>For ten years I've built the websites <span class="dim">that carry other people's names.</span></h1>
-          <p class="lede">Dean Graziosi. Frank Kern. JJ Virgin. David Bach. Peng Joon. Seventy&#8209;four more. I design and develop the sites, funnels, order forms and membership portals personal brands run their businesses on — then I make sure they hold up on launch day.</p>
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="#inquiry">Start a project</a>
-            <a class="link-arrow" href="#work">See selected work <span aria-hidden="true">&rarr;</span></a>
-          </div>
+          <p class="hero__hi">Hi, I&rsquo;m</p>
+          <h1 class="hero__name">Marvin<br>Balmaceda</h1>
+          <p class="hero__roles">Entrepreneur <i aria-hidden="true"></i> Web Developer</p>
+          <p class="hero__tagline">Helping digital marketers, teams, businesses grow smarter and feel their online presence.</p>
+          <nav class="hero__links" aria-label="Jump to section">
+            <a href="#about">About me</a><i aria-hidden="true">&bull;</i>
+            <a href="#work">My work</a><i aria-hidden="true">&bull;</i>
+            <a href="#testimonial">Testimonials</a><i aria-hidden="true">&bull;</i>
+            <a href="#inquiry">Contact me</a>
+          </nav>
         </div>
 
-        <!-- The work occludes his name. That is the thesis, rendered literally. -->
         <div class="hero__figure">
-          <!--HERO_CARD-->
-        <article class="work-card reveal" data-cat="personal-brand" style="--pan:26.14%;--reveal-delay:0ms">
-          <a class="work-card__link" href="#p-frank-kern" data-piece="frank-kern">
-            <span class="work-card__chrome">
-              <span class="work-card__client">Frank Kern</span>
-              <span class="work-card__cat">Personal Brand</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/frank-kern.avif" type="image/avif">
-                <source srcset="img/work/frank-kern.webp" type="image/webp">
-                <img src="img/work/frank-kern.jpg" alt="Frank Kern — website built by Marvin Balmaceda"
-                     width="760" height="1372"
-                     fetchpriority="high" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
-          </a>
-        </article>
-        <!--/HERO_CARD-->
+          <picture>
+            <source srcset="img/marvin-hero.avif" type="image/avif">
+            <source srcset="img/marvin-hero.webp" type="image/webp">
+            <img class="hero__portrait" src="img/marvin-hero.png"
+                 alt="Marvin Balmaceda" width="608" height="1080"
+                 fetchpriority="high" decoding="async">
+          </picture>
         </div>
       </div>
     </section>
 
-    <!-- ============ STATS ============ -->
-    <section class="band-base">
-      <div class="wrap">
-        <dl class="stats">
-          <div><dt class="stat__n">79</dt><dd class="stat__l">Client brands</dd></div>
-          <div><dt class="stat__n">24</dt><dd class="stat__l">Builds in the gallery</dd></div>
-          <div><dt class="stat__n">31</dt><dd class="stat__l">Platforms shipped on</dd></div>
-          <div><dt class="stat__n">2014</dt><dd class="stat__l">Building since</dd></div>
-        </dl>
+    <!-- ============ TRUSTED BY ============ -->
+    <section class="trusted">
+      <div class="wrap trusted__inner">
+        <div class="trusted__claim">
+          <h2>Trusted by</h2>
+        </div>
+        <ul class="trusted__row">
+            <li><img src="img/logos/liber8.png" alt="Liber8" height="27" loading="lazy" decoding="async"></li>
+            <li><img src="img/logos/luminify.svg" alt="Luminify.me" height="27" loading="lazy" decoding="async"></li>
+            <li><img src="img/logos/raid.svg" alt="RAID Real Estate" height="27" loading="lazy" decoding="async"></li>
+            <li><img src="img/logos/maverick1000.png" alt="Maverick1000" height="27" loading="lazy" decoding="async"></li>
+            <li><img src="img/logos/isitclean.svg" alt="IsItClean" height="27" loading="lazy" decoding="async"></li>
+            <li><img src="img/logos/magic.svg" alt="Magic Agency" height="27" loading="lazy" decoding="async"></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ============ NAME WALL ============ -->
-    <section class="section band-tint" id="clients">
+    <!-- ============ TOOLS ============ -->
+    <section class="section band-base tools" id="tools">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="label">the client list</p>
-          <h2>Names you already recognize.</h2>
-          <p class="lede">Every name below is a site, funnel, order form or membership portal I built or rebuilt. Names, not logos — the work is mine, the brands are theirs. The ones you can click have a piece in the gallery.</p>
+        <div class="section-head section-head--mid reveal">
+          <h2>These are the tools that I am experts in&hellip;</h2>
         </div>
-        <p class="namewall reveal">
-        <!--NAMES-->
-        <span>Adam Roa</span><i>&middot;</i>
-        <span>Agent Academy</span><i>&middot;</i>
-        <span>Alex Charfen</span><i>&middot;</i>
-        <span>Alexis Neely</span><i>&middot;</i>
-        <span>Allen Brouwer</span><i>&middot;</i>
-        <span>Amazing Selling Machine</span><i>&middot;</i>
-        <span>Beneath the Waves</span><i>&middot;</i>
-        <a href="#p-bodyfx">BodyFX</a><i>&middot;</i>
-        <span>Brad Chandler</span><i>&middot;</i>
-        <span>Camp Maverick</span><i>&middot;</i>
-        <a href="#p-certus-trading">Certus Trading</a><i>&middot;</i>
-        <span>Conscious Copy</span><i>&middot;</i>
-        <span>Cynthia Stadd</span><i>&middot;</i>
-        <span>Dan Lok</span><i>&middot;</i>
-        <span>Dane Maxwell</span><i>&middot;</i>
-        <a href="#p-david-bach">David Bach</a><i>&middot;</i>
-        <span>David Brown</span><i>&middot;</i>
-        <span>David Schwind</span><i>&middot;</i>
-        <a href="#p-dean-graziosi">Dean Graziosi</a><i>&middot;</i>
-        <span>Doren Aldana</span><i>&middot;</i>
-        <span>Double Your Dating</span><i>&middot;</i>
-        <span>Evo Planner</span><i>&middot;</i>
-        <span>Evolved Enterprise</span><i>&middot;</i>
-        <a href="#p-expert-agents">Expert Agents Only</a><i>&middot;</i>
-        <span>Express Home Buyer</span><i>&middot;</i>
-        <a href="#p-fit-father">Fit Father Project</a><i>&middot;</i>
-        <a href="#p-fit-mother">Fit Mother Project</a><i>&middot;</i>
-        <span>Food Revolution</span><i>&middot;</i>
-        <a href="#p-frank-kern">Frank Kern</a><i>&middot;</i>
-        <span>Glow 15</span><i>&middot;</i>
-        <a href="#p-grillmaster">Grillmaster University</a><i>&middot;</i>
-        <span>Healthy Yoga Life</span><i>&middot;</i>
-        <a href="#p-hope-to-haiti">Hope to Haiti</a><i>&middot;</i>
-        <span>Influence Agent</span><i>&middot;</i>
-        <span>James Guldan</span><i>&middot;</i>
-        <span>Jason Hornung</span><i>&middot;</i>
-        <span>Jesse Elder</span><i>&middot;</i>
-        <a href="#p-jj-virgin">JJ Virgin</a><i>&middot;</i>
-        <span>Jules Schroeder</span><i>&middot;</i>
-        <a href="#p-kent-clothier">Kent Clothier</a><i>&middot;</i>
-        <span>Kevin Harrington</span><i>&middot;</i>
-        <span>KG Foundation</span><i>&middot;</i>
-        <a href="#p-lifeboost-coffee">Lifeboost Coffee</a><i>&middot;</i>
-        <span>Lukaijah</span><i>&middot;</i>
-        <span>Mark Kohler</span><i>&middot;</i>
-        <span>Matt Clark</span><i>&middot;</i>
-        <span>Matt Kreinhelder</span><i>&middot;</i>
-        <a href="#p-matt-morris">Matt Morris</a><i>&middot;</i>
-        <span>Maverick 1000</span><i>&middot;</i>
-        <span>Melinda Wittstock</span><i>&middot;</i>
-        <a href="#p-mike-dillard">Mike Dillard</a><i>&middot;</i>
-        <span>Mike Koenigs</span><i>&middot;</i>
-        <span>Nest Above</span><i>&middot;</i>
-        <a href="#p-ocean-unite">Ocean Unite</a><i>&middot;</i>
-        <span>Order in Life</span><i>&middot;</i>
-        <span>Patrick Combs</span><i>&middot;</i>
-        <span>Peng Joon</span><i>&middot;</i>
-        <span>Rain Catcher</span><i>&middot;</i>
-        <a href="#p-revolution-golf">Revolution Golf</a><i>&middot;</i>
-        <span>RSD</span><i>&middot;</i>
-        <a href="#p-ryan-blair">Ryan Blair</a><i>&middot;</i>
-        <span>Ryan Stewman</span><i>&middot;</i>
-        <span>Saltstong</span><i>&middot;</i>
-        <span>Self Storage Investing</span><i>&middot;</i>
-        <span>SellerCon</span><i>&middot;</i>
-        <span>Sterling Griffin</span><i>&middot;</i>
-        <span>Strength Doctor</span><i>&middot;</i>
-        <span>Suzanne Evans</span><i>&middot;</i>
-        <a href="#p-ted-mcgrath">Ted McGrath</a><i>&middot;</i>
-        <span>The Doers Way</span><i>&middot;</i>
-        <a href="#p-dropship-club">The Dropship Club</a><i>&middot;</i>
-        <span>Thrive Dentist</span><i>&middot;</i>
-        <span>Tim Atkinson</span><i>&middot;</i>
-        <span>Top Performance Group</span><i>&middot;</i>
-        <span>Underground</span><i>&middot;</i>
-        <a href="#p-voxient">Voxient</a><i>&middot;</i>
-        <a href="#p-wellorg-media">Well Org</a><i>&middot;</i>
-        <span>Xpill</span><i>&middot;</i>
-        <span>Yanik Silver</span>
-        <!--/NAMES-->
-        </p>
+      </div>
+      <div class="tools__rows reveal">
+        <div class="tools__row">
+          <ul class="tools__track tools__track--left" style="--speed:62s">
+            <li><img src="img/tools/wordpress.svg" alt="WordPress" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/elementor.svg" alt="Elementor" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/wix.svg" alt="Wix" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/shopify.svg" alt="Shopify" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/clickfunnels.webp" alt="ClickFunnels" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/kajabi.svg" alt="Kajabi" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/clickbank.svg" alt="ClickBank" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/gohighlevel.svg" alt="GoHighLevel" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/keap.svg" alt="Keap" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/activecampaign.svg" alt="ActiveCampaign" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/wordpress.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/elementor.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/wix.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/shopify.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/clickfunnels.webp" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/kajabi.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/clickbank.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/gohighlevel.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/keap.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/activecampaign.svg" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+        <div class="tools__row">
+          <ul class="tools__track tools__track--right" style="--speed:74s">
+            <li><img src="img/tools/hubspot.svg" alt="HubSpot" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/mailchimp.svg" alt="Mailchimp" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/klaviyo.svg" alt="Klaviyo" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/zapier.svg" alt="Zapier" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/asana.svg" alt="Asana" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/clickup.svg" alt="ClickUp" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/google-analytics.svg" alt="Google Analytics" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/google-tag-manager.svg" alt="Google Tag Manager" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/meta.svg" alt="Meta Pixel" loading="lazy" decoding="async"></li>
+            <li><img src="img/tools/hotjar.svg" alt="Hotjar" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/hubspot.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/mailchimp.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/klaviyo.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/zapier.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/asana.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/clickup.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/google-analytics.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/google-tag-manager.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/meta.svg" alt="" loading="lazy" decoding="async"></li>
+            <li aria-hidden="true"><img src="img/tools/hotjar.svg" alt="" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrap">
+        <p class="tools__note">&hellip; just to name a few.</p>
       </div>
     </section>
 
     <!-- ============ WORK ============ -->
-    <section class="band-ink" id="work" style="padding-block: var(--gallery-y)">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="label">selected work</p>
-          <h2>A curated set, not an archive.</h2>
-          <p class="lede">Twenty-four builds, chosen for craft rather than recency. Hover any one to scroll the whole board.</p>
+    <section class="band-tint" id="work">
+      <div class="wrap" style="padding-top: var(--section-y)">
+        <div class="section-head section-head--mid reveal">
+          <h2>Some of the clients I've worked with.</h2>
+          <p class="lede">Twenty-four builds drifting past. Click any one to read the whole thing full size.</p>
         </div>
+      </div>
 
-        <div class="filters" role="group" aria-label="Filter work by type">
-          <button class="chip" type="button" data-filter="all" aria-pressed="true">All (24)</button>
-          <button class="chip" type="button" data-filter="personal-brand" aria-pressed="false">Personal Brand (9)</button>
-          <button class="chip" type="button" data-filter="corporate" aria-pressed="false">Corporate (9)</button>
-          <button class="chip" type="button" data-filter="sales-landing" aria-pressed="false">Sales &amp; Landing (4)</button>
-          <button class="chip" type="button" data-filter="membership" aria-pressed="false">Membership (2)</button>
+      <div class="mq-wall">
+        <div class="mq-wall__rows">
+        <!--MARQUEE-->
+      <div class="mq-row">
+        <div class="mq-track mq-track--left" style="--speed:120s">
+          <a class="mq-card" href="#p-frank-kern" data-piece="frank-kern">
+            <picture>
+              <source srcset="img/work/frank-kern.avif" type="image/avif">
+              <source srcset="img/work/frank-kern.webp" type="image/webp">
+              <img src="img/work/frank-kern.jpg" alt="Frank Kern — website built by Marvin Balmaceda"
+                   width="760" height="1372" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Frank Kern</span>
+          </a>
+          <a class="mq-card" href="#p-dean-graziosi" data-piece="dean-graziosi">
+            <picture>
+              <source srcset="img/work/dean-graziosi.avif" type="image/avif">
+              <source srcset="img/work/dean-graziosi.webp" type="image/webp">
+              <img src="img/work/dean-graziosi.jpg" alt="Dean Graziosi — website built by Marvin Balmaceda"
+                   width="760" height="1250" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Dean Graziosi</span>
+          </a>
+          <a class="mq-card" href="#p-jj-virgin" data-piece="jj-virgin">
+            <picture>
+              <source srcset="img/work/jj-virgin.avif" type="image/avif">
+              <source srcset="img/work/jj-virgin.webp" type="image/webp">
+              <img src="img/work/jj-virgin.jpg" alt="JJ Virgin — website built by Marvin Balmaceda"
+                   width="760" height="1481" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">JJ Virgin</span>
+          </a>
+          <a class="mq-card" href="#p-david-bach" data-piece="david-bach">
+            <picture>
+              <source srcset="img/work/david-bach.avif" type="image/avif">
+              <source srcset="img/work/david-bach.webp" type="image/webp">
+              <img src="img/work/david-bach.jpg" alt="David Bach — website built by Marvin Balmaceda"
+                   width="760" height="1690" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">David Bach</span>
+          </a>
+          <a class="mq-card" href="#p-mike-dillard" data-piece="mike-dillard">
+            <picture>
+              <source srcset="img/work/mike-dillard.avif" type="image/avif">
+              <source srcset="img/work/mike-dillard.webp" type="image/webp">
+              <img src="img/work/mike-dillard.jpg" alt="Mike Dillard — website built by Marvin Balmaceda"
+                   width="760" height="1502" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Mike Dillard</span>
+          </a>
+          <a class="mq-card" href="#p-kent-clothier" data-piece="kent-clothier">
+            <picture>
+              <source srcset="img/work/kent-clothier.avif" type="image/avif">
+              <source srcset="img/work/kent-clothier.webp" type="image/webp">
+              <img src="img/work/kent-clothier.jpg" alt="Kent Clothier — website built by Marvin Balmaceda"
+                   width="760" height="1613" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Kent Clothier</span>
+          </a>
+          <a class="mq-card" href="#p-ted-mcgrath" data-piece="ted-mcgrath">
+            <picture>
+              <source srcset="img/work/ted-mcgrath.avif" type="image/avif">
+              <source srcset="img/work/ted-mcgrath.webp" type="image/webp">
+              <img src="img/work/ted-mcgrath.jpg" alt="Ted McGrath — website built by Marvin Balmaceda"
+                   width="760" height="1650" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ted McGrath</span>
+          </a>
+          <a class="mq-card" href="#p-ryan-blair" data-piece="ryan-blair">
+            <picture>
+              <source srcset="img/work/ryan-blair.avif" type="image/avif">
+              <source srcset="img/work/ryan-blair.webp" type="image/webp">
+              <img src="img/work/ryan-blair.jpg" alt="Ryan Blair — website built by Marvin Balmaceda"
+                   width="760" height="1530" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ryan Blair</span>
+          </a>
+          <a class="mq-card" href="#p-matt-morris" data-piece="matt-morris">
+            <picture>
+              <source srcset="img/work/matt-morris.avif" type="image/avif">
+              <source srcset="img/work/matt-morris.webp" type="image/webp">
+              <img src="img/work/matt-morris.jpg" alt="Matt Morris — website built by Marvin Balmaceda"
+                   width="760" height="1712" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Matt Morris</span>
+          </a>
+          <a class="mq-card" href="#p-ocean-unite" data-piece="ocean-unite">
+            <picture>
+              <source srcset="img/work/ocean-unite.avif" type="image/avif">
+              <source srcset="img/work/ocean-unite.webp" type="image/webp">
+              <img src="img/work/ocean-unite.jpg" alt="Ocean Unite — website built by Marvin Balmaceda"
+                   width="760" height="1590" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ocean Unite</span>
+          </a>
+          <a class="mq-card" href="#p-certus-trading" data-piece="certus-trading">
+            <picture>
+              <source srcset="img/work/certus-trading.avif" type="image/avif">
+              <source srcset="img/work/certus-trading.webp" type="image/webp">
+              <img src="img/work/certus-trading.jpg" alt="Certus Trading — website built by Marvin Balmaceda"
+                   width="760" height="2381" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Certus Trading</span>
+          </a>
+          <a class="mq-card" href="#p-revolution-golf" data-piece="revolution-golf">
+            <picture>
+              <source srcset="img/work/revolution-golf.avif" type="image/avif">
+              <source srcset="img/work/revolution-golf.webp" type="image/webp">
+              <img src="img/work/revolution-golf.jpg" alt="Revolution Golf — website built by Marvin Balmaceda"
+                   width="760" height="1914" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Revolution Golf</span>
+          </a>
+          <a class="mq-card" href="#p-frank-kern" data-piece="frank-kern" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/frank-kern.avif" type="image/avif">
+              <source srcset="img/work/frank-kern.webp" type="image/webp">
+              <img src="img/work/frank-kern.jpg" alt=""
+                   width="760" height="1372" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Frank Kern</span>
+          </a>
+          <a class="mq-card" href="#p-dean-graziosi" data-piece="dean-graziosi" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/dean-graziosi.avif" type="image/avif">
+              <source srcset="img/work/dean-graziosi.webp" type="image/webp">
+              <img src="img/work/dean-graziosi.jpg" alt=""
+                   width="760" height="1250" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Dean Graziosi</span>
+          </a>
+          <a class="mq-card" href="#p-jj-virgin" data-piece="jj-virgin" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/jj-virgin.avif" type="image/avif">
+              <source srcset="img/work/jj-virgin.webp" type="image/webp">
+              <img src="img/work/jj-virgin.jpg" alt=""
+                   width="760" height="1481" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">JJ Virgin</span>
+          </a>
+          <a class="mq-card" href="#p-david-bach" data-piece="david-bach" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/david-bach.avif" type="image/avif">
+              <source srcset="img/work/david-bach.webp" type="image/webp">
+              <img src="img/work/david-bach.jpg" alt=""
+                   width="760" height="1690" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">David Bach</span>
+          </a>
+          <a class="mq-card" href="#p-mike-dillard" data-piece="mike-dillard" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/mike-dillard.avif" type="image/avif">
+              <source srcset="img/work/mike-dillard.webp" type="image/webp">
+              <img src="img/work/mike-dillard.jpg" alt=""
+                   width="760" height="1502" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Mike Dillard</span>
+          </a>
+          <a class="mq-card" href="#p-kent-clothier" data-piece="kent-clothier" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/kent-clothier.avif" type="image/avif">
+              <source srcset="img/work/kent-clothier.webp" type="image/webp">
+              <img src="img/work/kent-clothier.jpg" alt=""
+                   width="760" height="1613" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Kent Clothier</span>
+          </a>
+          <a class="mq-card" href="#p-ted-mcgrath" data-piece="ted-mcgrath" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ted-mcgrath.avif" type="image/avif">
+              <source srcset="img/work/ted-mcgrath.webp" type="image/webp">
+              <img src="img/work/ted-mcgrath.jpg" alt=""
+                   width="760" height="1650" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ted McGrath</span>
+          </a>
+          <a class="mq-card" href="#p-ryan-blair" data-piece="ryan-blair" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ryan-blair.avif" type="image/avif">
+              <source srcset="img/work/ryan-blair.webp" type="image/webp">
+              <img src="img/work/ryan-blair.jpg" alt=""
+                   width="760" height="1530" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ryan Blair</span>
+          </a>
+          <a class="mq-card" href="#p-matt-morris" data-piece="matt-morris" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/matt-morris.avif" type="image/avif">
+              <source srcset="img/work/matt-morris.webp" type="image/webp">
+              <img src="img/work/matt-morris.jpg" alt=""
+                   width="760" height="1712" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Matt Morris</span>
+          </a>
+          <a class="mq-card" href="#p-ocean-unite" data-piece="ocean-unite" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ocean-unite.avif" type="image/avif">
+              <source srcset="img/work/ocean-unite.webp" type="image/webp">
+              <img src="img/work/ocean-unite.jpg" alt=""
+                   width="760" height="1590" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ocean Unite</span>
+          </a>
+          <a class="mq-card" href="#p-certus-trading" data-piece="certus-trading" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/certus-trading.avif" type="image/avif">
+              <source srcset="img/work/certus-trading.webp" type="image/webp">
+              <img src="img/work/certus-trading.jpg" alt=""
+                   width="760" height="2381" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Certus Trading</span>
+          </a>
+          <a class="mq-card" href="#p-revolution-golf" data-piece="revolution-golf" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/revolution-golf.avif" type="image/avif">
+              <source srcset="img/work/revolution-golf.webp" type="image/webp">
+              <img src="img/work/revolution-golf.jpg" alt=""
+                   width="760" height="1914" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Revolution Golf</span>
+          </a>
         </div>
-        <p class="visually-hidden" role="status" id="filter-status"></p>
-
-        <div class="work-grid" id="grid">
-        <!--CARDS-->
-        <article class="work-card reveal" data-cat="personal-brand" style="--pan:26.14%;--reveal-delay:0ms">
-          <a class="work-card__link" href="#p-frank-kern" data-piece="frank-kern">
-            <span class="work-card__chrome">
-              <span class="work-card__client">Frank Kern</span>
-              <span class="work-card__cat">Personal Brand</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/frank-kern.avif" type="image/avif">
-                <source srcset="img/work/frank-kern.webp" type="image/webp">
-                <img src="img/work/frank-kern.jpg" alt="Frank Kern — website built by Marvin Balmaceda"
-                     width="760" height="1372"
-                     fetchpriority="high" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+      </div>
+      <div class="mq-row">
+        <div class="mq-track mq-track--right" style="--speed:105s">
+          <a class="mq-card" href="#p-wellorg-series" data-piece="wellorg-series">
+            <picture>
+              <source srcset="img/work/wellorg-series.avif" type="image/avif">
+              <source srcset="img/work/wellorg-series.webp" type="image/webp">
+              <img src="img/work/wellorg-series.jpg" alt="Well Org Interconnected Series — website built by Marvin Balmaceda"
+                   width="760" height="1995" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Interconnected Series</span>
           </a>
-        </article>
-        <article class="work-card reveal" data-cat="personal-brand" style="--pan:18.93%;--reveal-delay:60ms">
-          <a class="work-card__link" href="#p-dean-graziosi" data-piece="dean-graziosi">
-            <span class="work-card__chrome">
-              <span class="work-card__client">Dean Graziosi</span>
-              <span class="work-card__cat">Personal Brand</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/dean-graziosi.avif" type="image/avif">
-                <source srcset="img/work/dean-graziosi.webp" type="image/webp">
-                <img src="img/work/dean-graziosi.jpg" alt="Dean Graziosi — website built by Marvin Balmaceda"
-                     width="760" height="1250"
-                     fetchpriority="high" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+          <a class="mq-card" href="#p-dropship-club" data-piece="dropship-club">
+            <picture>
+              <source srcset="img/work/dropship-club.avif" type="image/avif">
+              <source srcset="img/work/dropship-club.webp" type="image/webp">
+              <img src="img/work/dropship-club.jpg" alt="The Dropship Club — website built by Marvin Balmaceda"
+                   width="760" height="2067" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">The Dropship Club</span>
           </a>
-        </article>
-        <article class="work-card reveal" data-cat="personal-brand" style="--pan:31.58%;--reveal-delay:120ms">
-          <a class="work-card__link" href="#p-jj-virgin" data-piece="jj-virgin">
-            <span class="work-card__chrome">
-              <span class="work-card__client">JJ Virgin</span>
-              <span class="work-card__cat">Personal Brand</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/jj-virgin.avif" type="image/avif">
-                <source srcset="img/work/jj-virgin.webp" type="image/webp">
-                <img src="img/work/jj-virgin.jpg" alt="JJ Virgin — website built by Marvin Balmaceda"
-                     width="760" height="1481"
-                     fetchpriority="high" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+          <a class="mq-card" href="#p-wellorg-moviemaker" data-piece="wellorg-moviemaker">
+            <picture>
+              <source srcset="img/work/wellorg-moviemaker.avif" type="image/avif">
+              <source srcset="img/work/wellorg-moviemaker.webp" type="image/webp">
+              <img src="img/work/wellorg-moviemaker.jpg" alt="Well Org Movie Maker Academy — website built by Marvin Balmaceda"
+                   width="760" height="2014" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Movie Maker Academy</span>
           </a>
-        </article>
-        <article class="work-card reveal" data-cat="personal-brand" style="--pan:40.04%;--reveal-delay:0ms">
-          <a class="work-card__link" href="#p-david-bach" data-piece="david-bach">
-            <span class="work-card__chrome">
-              <span class="work-card__client">David Bach</span>
-              <span class="work-card__cat">Personal Brand</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/david-bach.avif" type="image/avif">
-                <source srcset="img/work/david-bach.webp" type="image/webp">
-                <img src="img/work/david-bach.jpg" alt="David Bach — website built by Marvin Balmaceda"
-                     width="760" height="1690"
-                     loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+          <a class="mq-card" href="#p-wellorg-media" data-piece="wellorg-media">
+            <picture>
+              <source srcset="img/work/wellorg-media.avif" type="image/avif">
+              <source srcset="img/work/wellorg-media.webp" type="image/webp">
+              <img src="img/work/wellorg-media.jpg" alt="Well Org Media Academy — website built by Marvin Balmaceda"
+                   width="760" height="2243" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Media Academy</span>
           </a>
-        </article>
-        <article class="work-card reveal" data-cat="corporate" style="--pan:36.27%;--reveal-delay:60ms">
-          <a class="work-card__link" href="#p-ocean-unite" data-piece="ocean-unite">
-            <span class="work-card__chrome">
-              <span class="work-card__client">Ocean Unite</span>
-              <span class="work-card__cat">Corporate</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/ocean-unite.avif" type="image/avif">
-                <source srcset="img/work/ocean-unite.webp" type="image/webp">
-                <img src="img/work/ocean-unite.jpg" alt="Ocean Unite — website built by Marvin Balmaceda"
-                     width="760" height="1590"
-                     loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+          <a class="mq-card" href="#p-lifeboost-coffee" data-piece="lifeboost-coffee">
+            <picture>
+              <source srcset="img/work/lifeboost-coffee.avif" type="image/avif">
+              <source srcset="img/work/lifeboost-coffee.webp" type="image/webp">
+              <img src="img/work/lifeboost-coffee.jpg" alt="Lifeboost Coffee — website built by Marvin Balmaceda"
+                   width="760" height="2527" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Lifeboost Coffee</span>
           </a>
-        </article>
-        <article class="work-card reveal" data-cat="corporate" style="--pan:57.44%;--reveal-delay:120ms">
-          <a class="work-card__link" href="#p-certus-trading" data-piece="certus-trading">
-            <span class="work-card__chrome">
-              <span class="work-card__client">Certus Trading</span>
-              <span class="work-card__cat">Corporate</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/certus-trading.avif" type="image/avif">
-                <source srcset="img/work/certus-trading.webp" type="image/webp">
-                <img src="img/work/certus-trading.jpg" alt="Certus Trading — website built by Marvin Balmaceda"
-                     width="760" height="2381"
-                     loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+          <a class="mq-card" href="#p-grillmaster" data-piece="grillmaster">
+            <picture>
+              <source srcset="img/work/grillmaster.avif" type="image/avif">
+              <source srcset="img/work/grillmaster.webp" type="image/webp">
+              <img src="img/work/grillmaster.jpg" alt="Grillmaster University — website built by Marvin Balmaceda"
+                   width="760" height="2337" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Grillmaster University</span>
           </a>
-        </article>
-        <article class="work-card reveal" data-cat="sales-landing" style="--pan:56.64%;--reveal-delay:0ms">
-          <a class="work-card__link" href="#p-grillmaster" data-piece="grillmaster">
-            <span class="work-card__chrome">
-              <span class="work-card__client">Grillmaster University</span>
-              <span class="work-card__cat">Sales &amp; Landing</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/grillmaster.avif" type="image/avif">
-                <source srcset="img/work/grillmaster.webp" type="image/webp">
-                <img src="img/work/grillmaster.jpg" alt="Grillmaster University — website built by Marvin Balmaceda"
-                     width="760" height="2337"
-                     loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+          <a class="mq-card" href="#p-hope-to-haiti" data-piece="hope-to-haiti">
+            <picture>
+              <source srcset="img/work/hope-to-haiti.avif" type="image/avif">
+              <source srcset="img/work/hope-to-haiti.webp" type="image/webp">
+              <img src="img/work/hope-to-haiti.jpg" alt="Hope to Haiti — website built by Marvin Balmaceda"
+                   width="760" height="2127" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Hope to Haiti</span>
           </a>
-        </article>
-        <article class="work-card reveal" data-cat="sales-landing" style="--pan:59.90%;--reveal-delay:60ms">
-          <a class="work-card__link" href="#p-lifeboost-coffee" data-piece="lifeboost-coffee">
-            <span class="work-card__chrome">
-              <span class="work-card__client">Lifeboost Coffee</span>
-              <span class="work-card__cat">Sales &amp; Landing</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/lifeboost-coffee.avif" type="image/avif">
-                <source srcset="img/work/lifeboost-coffee.webp" type="image/webp">
-                <img src="img/work/lifeboost-coffee.jpg" alt="Lifeboost Coffee — website built by Marvin Balmaceda"
-                     width="760" height="2527"
-                     loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+          <a class="mq-card" href="#p-expert-agents" data-piece="expert-agents">
+            <picture>
+              <source srcset="img/work/expert-agents.avif" type="image/avif">
+              <source srcset="img/work/expert-agents.webp" type="image/webp">
+              <img src="img/work/expert-agents.jpg" alt="Expert Agents Only — website built by Marvin Balmaceda"
+                   width="760" height="1908" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Expert Agents Only</span>
           </a>
-        </article>
-        <article class="work-card reveal" data-cat="membership" style="--pan:50.98%;--reveal-delay:120ms">
-          <a class="work-card__link" href="#p-dropship-club" data-piece="dropship-club">
-            <span class="work-card__chrome">
-              <span class="work-card__client">The Dropship Club</span>
-              <span class="work-card__cat">Membership</span>
-            </span>
-            <span class="work-card__frame">
-              <picture>
-                <source srcset="img/work/dropship-club.avif" type="image/avif">
-                <source srcset="img/work/dropship-club.webp" type="image/webp">
-                <img src="img/work/dropship-club.jpg" alt="The Dropship Club — website built by Marvin Balmaceda"
-                     width="760" height="2067"
-                     loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work-card__spec">
-              <span class="work-card__height"></span>
-              <span class="work-card__view">Open</span>
-            </span>
+          <a class="mq-card" href="#p-voxient" data-piece="voxient">
+            <picture>
+              <source srcset="img/work/voxient.avif" type="image/avif">
+              <source srcset="img/work/voxient.webp" type="image/webp">
+              <img src="img/work/voxient.jpg" alt="Voxient — website built by Marvin Balmaceda"
+                   width="760" height="2145" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Voxient</span>
           </a>
-        </article>
-        <!--/CARDS-->
+          <a class="mq-card" href="#p-fit-father" data-piece="fit-father">
+            <picture>
+              <source srcset="img/work/fit-father.avif" type="image/avif">
+              <source srcset="img/work/fit-father.webp" type="image/webp">
+              <img src="img/work/fit-father.jpg" alt="Fit Father Project — website built by Marvin Balmaceda"
+                   width="760" height="2259" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Father Project</span>
+          </a>
+          <a class="mq-card" href="#p-fit-mother" data-piece="fit-mother">
+            <picture>
+              <source srcset="img/work/fit-mother.avif" type="image/avif">
+              <source srcset="img/work/fit-mother.webp" type="image/webp">
+              <img src="img/work/fit-mother.jpg" alt="Fit Mother Project — website built by Marvin Balmaceda"
+                   width="760" height="2453" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Mother Project</span>
+          </a>
+          <a class="mq-card" href="#p-bodyfx" data-piece="bodyfx">
+            <picture>
+              <source srcset="img/work/bodyfx.avif" type="image/avif">
+              <source srcset="img/work/bodyfx.webp" type="image/webp">
+              <img src="img/work/bodyfx.jpg" alt="BodyFX — website built by Marvin Balmaceda"
+                   width="760" height="1795" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">BodyFX</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-series" data-piece="wellorg-series" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/wellorg-series.avif" type="image/avif">
+              <source srcset="img/work/wellorg-series.webp" type="image/webp">
+              <img src="img/work/wellorg-series.jpg" alt=""
+                   width="760" height="1995" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Interconnected Series</span>
+          </a>
+          <a class="mq-card" href="#p-dropship-club" data-piece="dropship-club" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/dropship-club.avif" type="image/avif">
+              <source srcset="img/work/dropship-club.webp" type="image/webp">
+              <img src="img/work/dropship-club.jpg" alt=""
+                   width="760" height="2067" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">The Dropship Club</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-moviemaker" data-piece="wellorg-moviemaker" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/wellorg-moviemaker.avif" type="image/avif">
+              <source srcset="img/work/wellorg-moviemaker.webp" type="image/webp">
+              <img src="img/work/wellorg-moviemaker.jpg" alt=""
+                   width="760" height="2014" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Movie Maker Academy</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-media" data-piece="wellorg-media" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/wellorg-media.avif" type="image/avif">
+              <source srcset="img/work/wellorg-media.webp" type="image/webp">
+              <img src="img/work/wellorg-media.jpg" alt=""
+                   width="760" height="2243" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Media Academy</span>
+          </a>
+          <a class="mq-card" href="#p-lifeboost-coffee" data-piece="lifeboost-coffee" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/lifeboost-coffee.avif" type="image/avif">
+              <source srcset="img/work/lifeboost-coffee.webp" type="image/webp">
+              <img src="img/work/lifeboost-coffee.jpg" alt=""
+                   width="760" height="2527" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Lifeboost Coffee</span>
+          </a>
+          <a class="mq-card" href="#p-grillmaster" data-piece="grillmaster" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/grillmaster.avif" type="image/avif">
+              <source srcset="img/work/grillmaster.webp" type="image/webp">
+              <img src="img/work/grillmaster.jpg" alt=""
+                   width="760" height="2337" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Grillmaster University</span>
+          </a>
+          <a class="mq-card" href="#p-hope-to-haiti" data-piece="hope-to-haiti" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/hope-to-haiti.avif" type="image/avif">
+              <source srcset="img/work/hope-to-haiti.webp" type="image/webp">
+              <img src="img/work/hope-to-haiti.jpg" alt=""
+                   width="760" height="2127" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Hope to Haiti</span>
+          </a>
+          <a class="mq-card" href="#p-expert-agents" data-piece="expert-agents" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/expert-agents.avif" type="image/avif">
+              <source srcset="img/work/expert-agents.webp" type="image/webp">
+              <img src="img/work/expert-agents.jpg" alt=""
+                   width="760" height="1908" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Expert Agents Only</span>
+          </a>
+          <a class="mq-card" href="#p-voxient" data-piece="voxient" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/voxient.avif" type="image/avif">
+              <source srcset="img/work/voxient.webp" type="image/webp">
+              <img src="img/work/voxient.jpg" alt=""
+                   width="760" height="2145" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Voxient</span>
+          </a>
+          <a class="mq-card" href="#p-fit-father" data-piece="fit-father" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/fit-father.avif" type="image/avif">
+              <source srcset="img/work/fit-father.webp" type="image/webp">
+              <img src="img/work/fit-father.jpg" alt=""
+                   width="760" height="2259" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Father Project</span>
+          </a>
+          <a class="mq-card" href="#p-fit-mother" data-piece="fit-mother" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/fit-mother.avif" type="image/avif">
+              <source srcset="img/work/fit-mother.webp" type="image/webp">
+              <img src="img/work/fit-mother.jpg" alt=""
+                   width="760" height="2453" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Mother Project</span>
+          </a>
+          <a class="mq-card" href="#p-bodyfx" data-piece="bodyfx" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/bodyfx.avif" type="image/avif">
+              <source srcset="img/work/bodyfx.webp" type="image/webp">
+              <img src="img/work/bodyfx.jpg" alt=""
+                   width="760" height="1795" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">BodyFX</span>
+          </a>
         </div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-track mq-track--left" style="--speed:135s">
+          <a class="mq-card" href="#p-ted-mcgrath" data-piece="ted-mcgrath">
+            <picture>
+              <source srcset="img/work/ted-mcgrath.avif" type="image/avif">
+              <source srcset="img/work/ted-mcgrath.webp" type="image/webp">
+              <img src="img/work/ted-mcgrath.jpg" alt="Ted McGrath — website built by Marvin Balmaceda"
+                   width="760" height="1650" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ted McGrath</span>
+          </a>
+          <a class="mq-card" href="#p-ryan-blair" data-piece="ryan-blair">
+            <picture>
+              <source srcset="img/work/ryan-blair.avif" type="image/avif">
+              <source srcset="img/work/ryan-blair.webp" type="image/webp">
+              <img src="img/work/ryan-blair.jpg" alt="Ryan Blair — website built by Marvin Balmaceda"
+                   width="760" height="1530" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ryan Blair</span>
+          </a>
+          <a class="mq-card" href="#p-matt-morris" data-piece="matt-morris">
+            <picture>
+              <source srcset="img/work/matt-morris.avif" type="image/avif">
+              <source srcset="img/work/matt-morris.webp" type="image/webp">
+              <img src="img/work/matt-morris.jpg" alt="Matt Morris — website built by Marvin Balmaceda"
+                   width="760" height="1712" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Matt Morris</span>
+          </a>
+          <a class="mq-card" href="#p-ocean-unite" data-piece="ocean-unite">
+            <picture>
+              <source srcset="img/work/ocean-unite.avif" type="image/avif">
+              <source srcset="img/work/ocean-unite.webp" type="image/webp">
+              <img src="img/work/ocean-unite.jpg" alt="Ocean Unite — website built by Marvin Balmaceda"
+                   width="760" height="1590" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ocean Unite</span>
+          </a>
+          <a class="mq-card" href="#p-certus-trading" data-piece="certus-trading">
+            <picture>
+              <source srcset="img/work/certus-trading.avif" type="image/avif">
+              <source srcset="img/work/certus-trading.webp" type="image/webp">
+              <img src="img/work/certus-trading.jpg" alt="Certus Trading — website built by Marvin Balmaceda"
+                   width="760" height="2381" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Certus Trading</span>
+          </a>
+          <a class="mq-card" href="#p-revolution-golf" data-piece="revolution-golf">
+            <picture>
+              <source srcset="img/work/revolution-golf.avif" type="image/avif">
+              <source srcset="img/work/revolution-golf.webp" type="image/webp">
+              <img src="img/work/revolution-golf.jpg" alt="Revolution Golf — website built by Marvin Balmaceda"
+                   width="760" height="1914" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Revolution Golf</span>
+          </a>
+          <a class="mq-card" href="#p-bodyfx" data-piece="bodyfx">
+            <picture>
+              <source srcset="img/work/bodyfx.avif" type="image/avif">
+              <source srcset="img/work/bodyfx.webp" type="image/webp">
+              <img src="img/work/bodyfx.jpg" alt="BodyFX — website built by Marvin Balmaceda"
+                   width="760" height="1795" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">BodyFX</span>
+          </a>
+          <a class="mq-card" href="#p-fit-mother" data-piece="fit-mother">
+            <picture>
+              <source srcset="img/work/fit-mother.avif" type="image/avif">
+              <source srcset="img/work/fit-mother.webp" type="image/webp">
+              <img src="img/work/fit-mother.jpg" alt="Fit Mother Project — website built by Marvin Balmaceda"
+                   width="760" height="2453" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Mother Project</span>
+          </a>
+          <a class="mq-card" href="#p-fit-father" data-piece="fit-father">
+            <picture>
+              <source srcset="img/work/fit-father.avif" type="image/avif">
+              <source srcset="img/work/fit-father.webp" type="image/webp">
+              <img src="img/work/fit-father.jpg" alt="Fit Father Project — website built by Marvin Balmaceda"
+                   width="760" height="2259" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Father Project</span>
+          </a>
+          <a class="mq-card" href="#p-voxient" data-piece="voxient">
+            <picture>
+              <source srcset="img/work/voxient.avif" type="image/avif">
+              <source srcset="img/work/voxient.webp" type="image/webp">
+              <img src="img/work/voxient.jpg" alt="Voxient — website built by Marvin Balmaceda"
+                   width="760" height="2145" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Voxient</span>
+          </a>
+          <a class="mq-card" href="#p-expert-agents" data-piece="expert-agents">
+            <picture>
+              <source srcset="img/work/expert-agents.avif" type="image/avif">
+              <source srcset="img/work/expert-agents.webp" type="image/webp">
+              <img src="img/work/expert-agents.jpg" alt="Expert Agents Only — website built by Marvin Balmaceda"
+                   width="760" height="1908" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Expert Agents Only</span>
+          </a>
+          <a class="mq-card" href="#p-hope-to-haiti" data-piece="hope-to-haiti">
+            <picture>
+              <source srcset="img/work/hope-to-haiti.avif" type="image/avif">
+              <source srcset="img/work/hope-to-haiti.webp" type="image/webp">
+              <img src="img/work/hope-to-haiti.jpg" alt="Hope to Haiti — website built by Marvin Balmaceda"
+                   width="760" height="2127" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Hope to Haiti</span>
+          </a>
+          <a class="mq-card" href="#p-ted-mcgrath" data-piece="ted-mcgrath" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ted-mcgrath.avif" type="image/avif">
+              <source srcset="img/work/ted-mcgrath.webp" type="image/webp">
+              <img src="img/work/ted-mcgrath.jpg" alt=""
+                   width="760" height="1650" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ted McGrath</span>
+          </a>
+          <a class="mq-card" href="#p-ryan-blair" data-piece="ryan-blair" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ryan-blair.avif" type="image/avif">
+              <source srcset="img/work/ryan-blair.webp" type="image/webp">
+              <img src="img/work/ryan-blair.jpg" alt=""
+                   width="760" height="1530" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ryan Blair</span>
+          </a>
+          <a class="mq-card" href="#p-matt-morris" data-piece="matt-morris" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/matt-morris.avif" type="image/avif">
+              <source srcset="img/work/matt-morris.webp" type="image/webp">
+              <img src="img/work/matt-morris.jpg" alt=""
+                   width="760" height="1712" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Matt Morris</span>
+          </a>
+          <a class="mq-card" href="#p-ocean-unite" data-piece="ocean-unite" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ocean-unite.avif" type="image/avif">
+              <source srcset="img/work/ocean-unite.webp" type="image/webp">
+              <img src="img/work/ocean-unite.jpg" alt=""
+                   width="760" height="1590" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ocean Unite</span>
+          </a>
+          <a class="mq-card" href="#p-certus-trading" data-piece="certus-trading" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/certus-trading.avif" type="image/avif">
+              <source srcset="img/work/certus-trading.webp" type="image/webp">
+              <img src="img/work/certus-trading.jpg" alt=""
+                   width="760" height="2381" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Certus Trading</span>
+          </a>
+          <a class="mq-card" href="#p-revolution-golf" data-piece="revolution-golf" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/revolution-golf.avif" type="image/avif">
+              <source srcset="img/work/revolution-golf.webp" type="image/webp">
+              <img src="img/work/revolution-golf.jpg" alt=""
+                   width="760" height="1914" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Revolution Golf</span>
+          </a>
+          <a class="mq-card" href="#p-bodyfx" data-piece="bodyfx" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/bodyfx.avif" type="image/avif">
+              <source srcset="img/work/bodyfx.webp" type="image/webp">
+              <img src="img/work/bodyfx.jpg" alt=""
+                   width="760" height="1795" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">BodyFX</span>
+          </a>
+          <a class="mq-card" href="#p-fit-mother" data-piece="fit-mother" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/fit-mother.avif" type="image/avif">
+              <source srcset="img/work/fit-mother.webp" type="image/webp">
+              <img src="img/work/fit-mother.jpg" alt=""
+                   width="760" height="2453" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Mother Project</span>
+          </a>
+          <a class="mq-card" href="#p-fit-father" data-piece="fit-father" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/fit-father.avif" type="image/avif">
+              <source srcset="img/work/fit-father.webp" type="image/webp">
+              <img src="img/work/fit-father.jpg" alt=""
+                   width="760" height="2259" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Father Project</span>
+          </a>
+          <a class="mq-card" href="#p-voxient" data-piece="voxient" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/voxient.avif" type="image/avif">
+              <source srcset="img/work/voxient.webp" type="image/webp">
+              <img src="img/work/voxient.jpg" alt=""
+                   width="760" height="2145" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Voxient</span>
+          </a>
+          <a class="mq-card" href="#p-expert-agents" data-piece="expert-agents" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/expert-agents.avif" type="image/avif">
+              <source srcset="img/work/expert-agents.webp" type="image/webp">
+              <img src="img/work/expert-agents.jpg" alt=""
+                   width="760" height="1908" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Expert Agents Only</span>
+          </a>
+          <a class="mq-card" href="#p-hope-to-haiti" data-piece="hope-to-haiti" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/hope-to-haiti.avif" type="image/avif">
+              <source srcset="img/work/hope-to-haiti.webp" type="image/webp">
+              <img src="img/work/hope-to-haiti.jpg" alt=""
+                   width="760" height="2127" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Hope to Haiti</span>
+          </a>
+        </div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-track mq-track--right" style="--speed:114s">
+          <a class="mq-card" href="#p-kent-clothier" data-piece="kent-clothier">
+            <picture>
+              <source srcset="img/work/kent-clothier.avif" type="image/avif">
+              <source srcset="img/work/kent-clothier.webp" type="image/webp">
+              <img src="img/work/kent-clothier.jpg" alt="Kent Clothier — website built by Marvin Balmaceda"
+                   width="760" height="1613" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Kent Clothier</span>
+          </a>
+          <a class="mq-card" href="#p-mike-dillard" data-piece="mike-dillard">
+            <picture>
+              <source srcset="img/work/mike-dillard.avif" type="image/avif">
+              <source srcset="img/work/mike-dillard.webp" type="image/webp">
+              <img src="img/work/mike-dillard.jpg" alt="Mike Dillard — website built by Marvin Balmaceda"
+                   width="760" height="1502" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Mike Dillard</span>
+          </a>
+          <a class="mq-card" href="#p-david-bach" data-piece="david-bach">
+            <picture>
+              <source srcset="img/work/david-bach.avif" type="image/avif">
+              <source srcset="img/work/david-bach.webp" type="image/webp">
+              <img src="img/work/david-bach.jpg" alt="David Bach — website built by Marvin Balmaceda"
+                   width="760" height="1690" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">David Bach</span>
+          </a>
+          <a class="mq-card" href="#p-jj-virgin" data-piece="jj-virgin">
+            <picture>
+              <source srcset="img/work/jj-virgin.avif" type="image/avif">
+              <source srcset="img/work/jj-virgin.webp" type="image/webp">
+              <img src="img/work/jj-virgin.jpg" alt="JJ Virgin — website built by Marvin Balmaceda"
+                   width="760" height="1481" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">JJ Virgin</span>
+          </a>
+          <a class="mq-card" href="#p-dean-graziosi" data-piece="dean-graziosi">
+            <picture>
+              <source srcset="img/work/dean-graziosi.avif" type="image/avif">
+              <source srcset="img/work/dean-graziosi.webp" type="image/webp">
+              <img src="img/work/dean-graziosi.jpg" alt="Dean Graziosi — website built by Marvin Balmaceda"
+                   width="760" height="1250" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Dean Graziosi</span>
+          </a>
+          <a class="mq-card" href="#p-frank-kern" data-piece="frank-kern">
+            <picture>
+              <source srcset="img/work/frank-kern.avif" type="image/avif">
+              <source srcset="img/work/frank-kern.webp" type="image/webp">
+              <img src="img/work/frank-kern.jpg" alt="Frank Kern — website built by Marvin Balmaceda"
+                   width="760" height="1372" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Frank Kern</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-series" data-piece="wellorg-series">
+            <picture>
+              <source srcset="img/work/wellorg-series.avif" type="image/avif">
+              <source srcset="img/work/wellorg-series.webp" type="image/webp">
+              <img src="img/work/wellorg-series.jpg" alt="Well Org Interconnected Series — website built by Marvin Balmaceda"
+                   width="760" height="1995" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Interconnected Series</span>
+          </a>
+          <a class="mq-card" href="#p-dropship-club" data-piece="dropship-club">
+            <picture>
+              <source srcset="img/work/dropship-club.avif" type="image/avif">
+              <source srcset="img/work/dropship-club.webp" type="image/webp">
+              <img src="img/work/dropship-club.jpg" alt="The Dropship Club — website built by Marvin Balmaceda"
+                   width="760" height="2067" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">The Dropship Club</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-moviemaker" data-piece="wellorg-moviemaker">
+            <picture>
+              <source srcset="img/work/wellorg-moviemaker.avif" type="image/avif">
+              <source srcset="img/work/wellorg-moviemaker.webp" type="image/webp">
+              <img src="img/work/wellorg-moviemaker.jpg" alt="Well Org Movie Maker Academy — website built by Marvin Balmaceda"
+                   width="760" height="2014" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Movie Maker Academy</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-media" data-piece="wellorg-media">
+            <picture>
+              <source srcset="img/work/wellorg-media.avif" type="image/avif">
+              <source srcset="img/work/wellorg-media.webp" type="image/webp">
+              <img src="img/work/wellorg-media.jpg" alt="Well Org Media Academy — website built by Marvin Balmaceda"
+                   width="760" height="2243" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Media Academy</span>
+          </a>
+          <a class="mq-card" href="#p-lifeboost-coffee" data-piece="lifeboost-coffee">
+            <picture>
+              <source srcset="img/work/lifeboost-coffee.avif" type="image/avif">
+              <source srcset="img/work/lifeboost-coffee.webp" type="image/webp">
+              <img src="img/work/lifeboost-coffee.jpg" alt="Lifeboost Coffee — website built by Marvin Balmaceda"
+                   width="760" height="2527" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Lifeboost Coffee</span>
+          </a>
+          <a class="mq-card" href="#p-grillmaster" data-piece="grillmaster">
+            <picture>
+              <source srcset="img/work/grillmaster.avif" type="image/avif">
+              <source srcset="img/work/grillmaster.webp" type="image/webp">
+              <img src="img/work/grillmaster.jpg" alt="Grillmaster University — website built by Marvin Balmaceda"
+                   width="760" height="2337" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Grillmaster University</span>
+          </a>
+          <a class="mq-card" href="#p-kent-clothier" data-piece="kent-clothier" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/kent-clothier.avif" type="image/avif">
+              <source srcset="img/work/kent-clothier.webp" type="image/webp">
+              <img src="img/work/kent-clothier.jpg" alt=""
+                   width="760" height="1613" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Kent Clothier</span>
+          </a>
+          <a class="mq-card" href="#p-mike-dillard" data-piece="mike-dillard" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/mike-dillard.avif" type="image/avif">
+              <source srcset="img/work/mike-dillard.webp" type="image/webp">
+              <img src="img/work/mike-dillard.jpg" alt=""
+                   width="760" height="1502" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Mike Dillard</span>
+          </a>
+          <a class="mq-card" href="#p-david-bach" data-piece="david-bach" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/david-bach.avif" type="image/avif">
+              <source srcset="img/work/david-bach.webp" type="image/webp">
+              <img src="img/work/david-bach.jpg" alt=""
+                   width="760" height="1690" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">David Bach</span>
+          </a>
+          <a class="mq-card" href="#p-jj-virgin" data-piece="jj-virgin" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/jj-virgin.avif" type="image/avif">
+              <source srcset="img/work/jj-virgin.webp" type="image/webp">
+              <img src="img/work/jj-virgin.jpg" alt=""
+                   width="760" height="1481" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">JJ Virgin</span>
+          </a>
+          <a class="mq-card" href="#p-dean-graziosi" data-piece="dean-graziosi" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/dean-graziosi.avif" type="image/avif">
+              <source srcset="img/work/dean-graziosi.webp" type="image/webp">
+              <img src="img/work/dean-graziosi.jpg" alt=""
+                   width="760" height="1250" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Dean Graziosi</span>
+          </a>
+          <a class="mq-card" href="#p-frank-kern" data-piece="frank-kern" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/frank-kern.avif" type="image/avif">
+              <source srcset="img/work/frank-kern.webp" type="image/webp">
+              <img src="img/work/frank-kern.jpg" alt=""
+                   width="760" height="1372" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Frank Kern</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-series" data-piece="wellorg-series" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/wellorg-series.avif" type="image/avif">
+              <source srcset="img/work/wellorg-series.webp" type="image/webp">
+              <img src="img/work/wellorg-series.jpg" alt=""
+                   width="760" height="1995" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Interconnected Series</span>
+          </a>
+          <a class="mq-card" href="#p-dropship-club" data-piece="dropship-club" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/dropship-club.avif" type="image/avif">
+              <source srcset="img/work/dropship-club.webp" type="image/webp">
+              <img src="img/work/dropship-club.jpg" alt=""
+                   width="760" height="2067" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">The Dropship Club</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-moviemaker" data-piece="wellorg-moviemaker" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/wellorg-moviemaker.avif" type="image/avif">
+              <source srcset="img/work/wellorg-moviemaker.webp" type="image/webp">
+              <img src="img/work/wellorg-moviemaker.jpg" alt=""
+                   width="760" height="2014" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Movie Maker Academy</span>
+          </a>
+          <a class="mq-card" href="#p-wellorg-media" data-piece="wellorg-media" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/wellorg-media.avif" type="image/avif">
+              <source srcset="img/work/wellorg-media.webp" type="image/webp">
+              <img src="img/work/wellorg-media.jpg" alt=""
+                   width="760" height="2243" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Well Org Media Academy</span>
+          </a>
+          <a class="mq-card" href="#p-lifeboost-coffee" data-piece="lifeboost-coffee" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/lifeboost-coffee.avif" type="image/avif">
+              <source srcset="img/work/lifeboost-coffee.webp" type="image/webp">
+              <img src="img/work/lifeboost-coffee.jpg" alt=""
+                   width="760" height="2527" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Lifeboost Coffee</span>
+          </a>
+          <a class="mq-card" href="#p-grillmaster" data-piece="grillmaster" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/grillmaster.avif" type="image/avif">
+              <source srcset="img/work/grillmaster.webp" type="image/webp">
+              <img src="img/work/grillmaster.jpg" alt=""
+                   width="760" height="2337" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Grillmaster University</span>
+          </a>
+        </div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-track mq-track--left" style="--speed:144s">
+          <a class="mq-card" href="#p-david-bach" data-piece="david-bach">
+            <picture>
+              <source srcset="img/work/david-bach.avif" type="image/avif">
+              <source srcset="img/work/david-bach.webp" type="image/webp">
+              <img src="img/work/david-bach.jpg" alt="David Bach — website built by Marvin Balmaceda"
+                   width="760" height="1690" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">David Bach</span>
+          </a>
+          <a class="mq-card" href="#p-mike-dillard" data-piece="mike-dillard">
+            <picture>
+              <source srcset="img/work/mike-dillard.avif" type="image/avif">
+              <source srcset="img/work/mike-dillard.webp" type="image/webp">
+              <img src="img/work/mike-dillard.jpg" alt="Mike Dillard — website built by Marvin Balmaceda"
+                   width="760" height="1502" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Mike Dillard</span>
+          </a>
+          <a class="mq-card" href="#p-kent-clothier" data-piece="kent-clothier">
+            <picture>
+              <source srcset="img/work/kent-clothier.avif" type="image/avif">
+              <source srcset="img/work/kent-clothier.webp" type="image/webp">
+              <img src="img/work/kent-clothier.jpg" alt="Kent Clothier — website built by Marvin Balmaceda"
+                   width="760" height="1613" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Kent Clothier</span>
+          </a>
+          <a class="mq-card" href="#p-ted-mcgrath" data-piece="ted-mcgrath">
+            <picture>
+              <source srcset="img/work/ted-mcgrath.avif" type="image/avif">
+              <source srcset="img/work/ted-mcgrath.webp" type="image/webp">
+              <img src="img/work/ted-mcgrath.jpg" alt="Ted McGrath — website built by Marvin Balmaceda"
+                   width="760" height="1650" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ted McGrath</span>
+          </a>
+          <a class="mq-card" href="#p-ryan-blair" data-piece="ryan-blair">
+            <picture>
+              <source srcset="img/work/ryan-blair.avif" type="image/avif">
+              <source srcset="img/work/ryan-blair.webp" type="image/webp">
+              <img src="img/work/ryan-blair.jpg" alt="Ryan Blair — website built by Marvin Balmaceda"
+                   width="760" height="1530" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ryan Blair</span>
+          </a>
+          <a class="mq-card" href="#p-matt-morris" data-piece="matt-morris">
+            <picture>
+              <source srcset="img/work/matt-morris.avif" type="image/avif">
+              <source srcset="img/work/matt-morris.webp" type="image/webp">
+              <img src="img/work/matt-morris.jpg" alt="Matt Morris — website built by Marvin Balmaceda"
+                   width="760" height="1712" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Matt Morris</span>
+          </a>
+          <a class="mq-card" href="#p-ocean-unite" data-piece="ocean-unite">
+            <picture>
+              <source srcset="img/work/ocean-unite.avif" type="image/avif">
+              <source srcset="img/work/ocean-unite.webp" type="image/webp">
+              <img src="img/work/ocean-unite.jpg" alt="Ocean Unite — website built by Marvin Balmaceda"
+                   width="760" height="1590" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ocean Unite</span>
+          </a>
+          <a class="mq-card" href="#p-certus-trading" data-piece="certus-trading">
+            <picture>
+              <source srcset="img/work/certus-trading.avif" type="image/avif">
+              <source srcset="img/work/certus-trading.webp" type="image/webp">
+              <img src="img/work/certus-trading.jpg" alt="Certus Trading — website built by Marvin Balmaceda"
+                   width="760" height="2381" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Certus Trading</span>
+          </a>
+          <a class="mq-card" href="#p-revolution-golf" data-piece="revolution-golf">
+            <picture>
+              <source srcset="img/work/revolution-golf.avif" type="image/avif">
+              <source srcset="img/work/revolution-golf.webp" type="image/webp">
+              <img src="img/work/revolution-golf.jpg" alt="Revolution Golf — website built by Marvin Balmaceda"
+                   width="760" height="1914" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Revolution Golf</span>
+          </a>
+          <a class="mq-card" href="#p-bodyfx" data-piece="bodyfx">
+            <picture>
+              <source srcset="img/work/bodyfx.avif" type="image/avif">
+              <source srcset="img/work/bodyfx.webp" type="image/webp">
+              <img src="img/work/bodyfx.jpg" alt="BodyFX — website built by Marvin Balmaceda"
+                   width="760" height="1795" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">BodyFX</span>
+          </a>
+          <a class="mq-card" href="#p-fit-mother" data-piece="fit-mother">
+            <picture>
+              <source srcset="img/work/fit-mother.avif" type="image/avif">
+              <source srcset="img/work/fit-mother.webp" type="image/webp">
+              <img src="img/work/fit-mother.jpg" alt="Fit Mother Project — website built by Marvin Balmaceda"
+                   width="760" height="2453" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Mother Project</span>
+          </a>
+          <a class="mq-card" href="#p-fit-father" data-piece="fit-father">
+            <picture>
+              <source srcset="img/work/fit-father.avif" type="image/avif">
+              <source srcset="img/work/fit-father.webp" type="image/webp">
+              <img src="img/work/fit-father.jpg" alt="Fit Father Project — website built by Marvin Balmaceda"
+                   width="760" height="2259" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Father Project</span>
+          </a>
+          <a class="mq-card" href="#p-david-bach" data-piece="david-bach" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/david-bach.avif" type="image/avif">
+              <source srcset="img/work/david-bach.webp" type="image/webp">
+              <img src="img/work/david-bach.jpg" alt=""
+                   width="760" height="1690" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">David Bach</span>
+          </a>
+          <a class="mq-card" href="#p-mike-dillard" data-piece="mike-dillard" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/mike-dillard.avif" type="image/avif">
+              <source srcset="img/work/mike-dillard.webp" type="image/webp">
+              <img src="img/work/mike-dillard.jpg" alt=""
+                   width="760" height="1502" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Mike Dillard</span>
+          </a>
+          <a class="mq-card" href="#p-kent-clothier" data-piece="kent-clothier" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/kent-clothier.avif" type="image/avif">
+              <source srcset="img/work/kent-clothier.webp" type="image/webp">
+              <img src="img/work/kent-clothier.jpg" alt=""
+                   width="760" height="1613" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Kent Clothier</span>
+          </a>
+          <a class="mq-card" href="#p-ted-mcgrath" data-piece="ted-mcgrath" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ted-mcgrath.avif" type="image/avif">
+              <source srcset="img/work/ted-mcgrath.webp" type="image/webp">
+              <img src="img/work/ted-mcgrath.jpg" alt=""
+                   width="760" height="1650" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ted McGrath</span>
+          </a>
+          <a class="mq-card" href="#p-ryan-blair" data-piece="ryan-blair" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ryan-blair.avif" type="image/avif">
+              <source srcset="img/work/ryan-blair.webp" type="image/webp">
+              <img src="img/work/ryan-blair.jpg" alt=""
+                   width="760" height="1530" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ryan Blair</span>
+          </a>
+          <a class="mq-card" href="#p-matt-morris" data-piece="matt-morris" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/matt-morris.avif" type="image/avif">
+              <source srcset="img/work/matt-morris.webp" type="image/webp">
+              <img src="img/work/matt-morris.jpg" alt=""
+                   width="760" height="1712" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Matt Morris</span>
+          </a>
+          <a class="mq-card" href="#p-ocean-unite" data-piece="ocean-unite" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/ocean-unite.avif" type="image/avif">
+              <source srcset="img/work/ocean-unite.webp" type="image/webp">
+              <img src="img/work/ocean-unite.jpg" alt=""
+                   width="760" height="1590" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Ocean Unite</span>
+          </a>
+          <a class="mq-card" href="#p-certus-trading" data-piece="certus-trading" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/certus-trading.avif" type="image/avif">
+              <source srcset="img/work/certus-trading.webp" type="image/webp">
+              <img src="img/work/certus-trading.jpg" alt=""
+                   width="760" height="2381" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Certus Trading</span>
+          </a>
+          <a class="mq-card" href="#p-revolution-golf" data-piece="revolution-golf" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/revolution-golf.avif" type="image/avif">
+              <source srcset="img/work/revolution-golf.webp" type="image/webp">
+              <img src="img/work/revolution-golf.jpg" alt=""
+                   width="760" height="1914" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Revolution Golf</span>
+          </a>
+          <a class="mq-card" href="#p-bodyfx" data-piece="bodyfx" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/bodyfx.avif" type="image/avif">
+              <source srcset="img/work/bodyfx.webp" type="image/webp">
+              <img src="img/work/bodyfx.jpg" alt=""
+                   width="760" height="1795" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">BodyFX</span>
+          </a>
+          <a class="mq-card" href="#p-fit-mother" data-piece="fit-mother" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/fit-mother.avif" type="image/avif">
+              <source srcset="img/work/fit-mother.webp" type="image/webp">
+              <img src="img/work/fit-mother.jpg" alt=""
+                   width="760" height="2453" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Mother Project</span>
+          </a>
+          <a class="mq-card" href="#p-fit-father" data-piece="fit-father" aria-hidden="true" tabindex="-1">
+            <picture>
+              <source srcset="img/work/fit-father.avif" type="image/avif">
+              <source srcset="img/work/fit-father.webp" type="image/webp">
+              <img src="img/work/fit-father.jpg" alt=""
+                   width="760" height="2259" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">Fit Father Project</span>
+          </a>
+        </div>
+      </div>
+        <!--/MARQUEE-->
+        </div>
+        <div class="mq-wall__fade mq-wall__fade--top" aria-hidden="true"></div>
+        <div class="mq-wall__fade mq-wall__fade--bottom" aria-hidden="true"></div>
+      </div>
 
+      <div class="wrap" style="padding-bottom: var(--section-y); text-align:center">
         <p style="margin-top: var(--s12)">
-          <a class="link-arrow" href="work.html">See all twenty-four <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--primary" href="work.html">See all twenty-four</a>
         </p>
       </div>
     </section>
@@ -488,8 +1372,7 @@
     <!-- ============ SERVICES ============ -->
     <section class="section band-base" id="services">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="label">what I do</p>
+        <div class="section-head section-head--mid reveal">
           <h2>Design comes in. <span class="dim">A working, tracked, fast site goes out.</span></h2>
           <p class="lede">Five things, done properly. Most projects are one or two of them.</p>
         </div>
@@ -530,148 +1413,161 @@
       </div>
     </section>
 
-    <!-- ============ STACK ============ -->
-    <section class="section band-warm" id="stack">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="label">the stack</p>
-          <h2>Thirty-one platforms I don't have to learn on your budget.</h2>
-          <p class="lede">If your launch depends on one of these, I've already shipped on it — and I already know where it breaks.</p>
-        </div>
-
-        <div class="reveal">
-          <div class="stack__group">
-            <h3>build</h3>
-            <ul class="stack__list"><li>Beaver Builder</li><li>Divi</li><li>Elementor</li><li>Figma</li><li>Visual Composer</li><li>Webflow</li><li>Wix</li><li>WordPress</li></ul>
-          </div>
-          <div class="stack__group">
-            <h3>funnels and checkout</h3>
-            <ul class="stack__list"><li>ClickFunnels</li><li>Shopify</li><li>Spiffy</li><li>Unbounce</li><li>WooCommerce</li></ul>
-          </div>
-          <div class="stack__group">
-            <h3>courses and membership</h3>
-            <ul class="stack__list"><li>BuddyBoss</li><li>Kajabi</li><li>LearnDash</li><li>Memberium</li><li>Thinkific</li><li>Wishlist Member</li></ul>
-          </div>
-          <div class="stack__group">
-            <h3>CRM and email</h3>
-            <ul class="stack__list"><li>ActiveCampaign</li><li>ConvertKit</li><li>GoHighLevel</li><li>HubSpot</li><li>Keap</li><li>Klaviyo</li><li>MailChimp</li><li>Zapier</li></ul>
-          </div>
-          <div class="stack__group">
-            <h3>measurement</h3>
-            <ul class="stack__list"><li>Google Analytics</li><li>Google Tag Manager</li><li>Hotjar</li><li>Meta Pixel</li></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ TESTIMONIAL ============ -->
     <section class="section band-base" id="testimonial">
-      <div class="wrap">
-        <div class="split-5-6">
-          <div class="reveal">
-            <p class="label">in someone else's words</p>
-            <!-- TODO(owner): replace this heading with the strongest 15–25 words
-                 pulled from the actual recording, set in .quote. Nothing here is
-                 invented, which is why there is no quotation yet. -->
-            <h2 class="quote">James Guldan on what it was like to work together.</h2>
-            <div class="quote__attr">
+      <!--TESTIMONIALS-->
+<div class="wrap">
+        <div class="section-head section-head--mid reveal">
+          <h2>What my clients have to say about me.</h2>
+        </div>
+
+        <!-- The <video> keeps its native controls, so with JS off this is an
+             ordinary player. The poster overlay ships hidden and is revealed by
+             JS, which is what makes the facade progressive rather than required. -->
+        <div class="vfacade reveal" data-vfacade>
+          <video id="testimonial-video" controls playsinline preload="none"
+                 poster="video/james-guldan-poster.jpg" width="480" height="272">
+            <source src="video/james-guldan.mp4" type="video/mp4">
+            <track kind="captions" src="video/james-guldan.vtt" srclang="en" label="English">
+            Your browser can't play this video. <a href="video/james-guldan.mp4">Download it instead.</a>
+          </video>
+          <button class="vfacade__cover" type="button" hidden
+                  aria-label="Play the video testimonial from James Guldan">
+            <img src="video/james-guldan-poster.jpg" alt="" loading="lazy" decoding="async">
+            <span class="vfacade__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="vfacade__caption">
               <strong>James Guldan</strong>
-              <span class="micro">Personal brand site &middot; one minute</span>
-            </div>
-          </div>
-          <div class="video reveal">
-            <video controls playsinline preload="none" poster="video/james-guldan-poster.jpg" width="480" height="272">
-              <source src="video/james-guldan.mp4" type="video/mp4">
-              <track kind="captions" src="video/james-guldan.vtt" srclang="en" label="English">
-              Your browser can't play this video. <a href="video/james-guldan.mp4">Download it instead.</a>
-            </video>
-          </div>
+              <span>Owner / Founder, Magic Agency &middot; one minute</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="testi-grid">
+          <figure class="testi reveal">
+            <span class="testi__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote><p>Marvin is an expert at his craft and his timeliness is superior. I highly recommend him to anyone interested in his website and integration skills. He is also a great person to work with and a wonderful communicator.</p></blockquote>
+            <figcaption class="testi__who">
+              <strong>Nikky Kho</strong>
+              <span>CEO, Real AI Dynamics</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testi reveal" style="--reveal-delay:60ms">
+            <span class="testi__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote><p>Working with Marvin has been seamless. He's not just technically solid — he's proactive, responsive and solution-oriented. I never had to follow up or micro-manage. If you're a founder looking for a reliable web developer who thinks like a team member, not just a freelancer, Marvin's your guy.</p></blockquote>
+            <figcaption class="testi__who">
+              <strong>Phil Neil</strong>
+              <span>CEO, Founders Compass</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testi reveal" style="--reveal-delay:120ms">
+            <span class="testi__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote><p>I am very happy with the website that Marvin and his team built for me. I was most impressed with the speed of iteration. Marvin is an excellent communicator and got the project done on budget and on time. Highly recommend.</p></blockquote>
+            <figcaption class="testi__who">
+              <strong>Gareth Herman</strong>
+              <span>Exited Founder, FORCE22</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
+        <!--/TESTIMONIALS-->
     </section>
 
     <!-- ============ ABOUT ============ -->
     <section class="section band-tint" id="about">
-      <div class="wrap">
-        <div class="split-7-4">
-          <div class="reveal">
-            <p class="label">who you'd be working with</p>
-            <h2>One developer, ten years, no hand-offs.</h2>
-            <div class="prose" style="margin-top: var(--s6)">
-              <p>I'm Marvin Balmaceda. I've spent a decade as the developer behind personal brands, most of it working directly with the marketing leads, designers and launch managers who need something live by Tuesday. When a project needs more hands I bring in my studio, Fixels — but you talk to me, and I'm the one in the build.</p>
-              <p>I work in whatever your team already uses. I document what I change. And I'd rather tell you a timeline is wrong before we start than apologize for it after.</p>
-            </div>
-            <p style="margin-top: var(--s8)">
-              <a class="link-arrow" href="about.html">More about how I work <span aria-hidden="true">&rarr;</span></a>
-            </p>
-          </div>
-          <div class="reveal" style="--reveal-delay:80ms">
-            <ul class="stack__list" style="grid-template-columns:1fr; gap: var(--s3)">
-              <li><strong style="color:var(--text-primary)">Manila, UTC+8</strong><br>Daily overlap with US teams</li>
-              <li style="margin-top:var(--s4)"><strong style="color:var(--text-primary)">Since 2014</strong><br>79 client brands</li>
-              <li style="margin-top:var(--s4)"><strong style="color:var(--text-primary)">Small on purpose</strong><br>You talk to the person building it</li>
-            </ul>
-          </div>
+      <!--TIMELINE-->
+<div class="wrap">
+        <div class="section-head section-head--mid reveal">
+          <h2>Fifteen years, one trade.</h2>
+          <p class="lede">From a first WordPress theme to launch weeks for brands you already know.</p>
         </div>
-      </div>
-    </section>
 
-    <!-- ============ FAQ ============ -->
-    <section class="section band-base" id="faq">
-      <div class="wrap">
-        <div class="split-7-5">
-          <div class="section-head reveal" style="margin-bottom:0">
-            <p class="label">before you ask</p>
-            <h2>The questions that come up first.</h2>
+        <!-- PLACEHOLDER CONTENT — years and copy are dummy text pending the real
+             milestones. Structure and behaviour are final. -->
+        <div class="tl reveal" id="timeline">
+          <div class="tl__rail" role="tablist" aria-label="Career timeline">
+            <button class="tl__year" role="tab" id="tl-2011" aria-controls="tlp-2011" aria-selected="true" tabindex="0">2011</button>
+            <button class="tl__year" role="tab" id="tl-2013" aria-controls="tlp-2013" aria-selected="false" tabindex="-1">2013</button>
+            <button class="tl__year" role="tab" id="tl-2015" aria-controls="tlp-2015" aria-selected="false" tabindex="-1">2015</button>
+            <button class="tl__year" role="tab" id="tl-2017" aria-controls="tlp-2017" aria-selected="false" tabindex="-1">2017</button>
+            <button class="tl__year" role="tab" id="tl-2019" aria-controls="tlp-2019" aria-selected="false" tabindex="-1">2019</button>
+            <button class="tl__year" role="tab" id="tl-2021" aria-controls="tlp-2021" aria-selected="false" tabindex="-1">2021</button>
+            <button class="tl__year" role="tab" id="tl-2023" aria-controls="tlp-2023" aria-selected="false" tabindex="-1">2023</button>
+            <button class="tl__year" role="tab" id="tl-2026" aria-controls="tlp-2026" aria-selected="false" tabindex="-1">Today</button>
           </div>
-          <div class="faq reveal">
-            <details>
-              <summary>How do you price a project?</summary>
-              <p>Every project is a fixed fee against a written scope, quoted after one short conversation. You know the number before anything starts. If the scope changes I send a change note with a new number before I build it — you will never get a surprise invoice.</p>
-            </details>
-            <details>
-              <summary>How long does a typical project take?</summary>
-              <p>A landing page or order form is usually days. A full brand site is three to six weeks depending on how settled the design is. A membership or course build runs longer, because the testing matters more than the building.</p>
-            </details>
-            <details>
-              <summary>Do you work with my existing designer?</summary>
-              <p>Often. A large share of my work is building someone else's design faithfully — Figma, XD or Photoshop. I flag the places a design will fight the platform before I start, not after.</p>
-            </details>
-            <details>
-              <summary>What if my site is already built?</summary>
-              <p>Then it's a rebuild, a rescue or a care plan. I audit what's there first and tell you which of the three it actually is, even when that's the smaller job.</p>
-            </details>
-            <details>
-              <summary>Do you work with US timezones?</summary>
-              <p>Yes. I'm in Manila, UTC+8, and I hold a daily overlap with US teams. In ten years the timezone has not been the constraint.</p>
-            </details>
-            <details>
-              <summary>What happens after launch?</summary>
-              <p>Either I hand over documented and you take it from there, or I stay on a flat monthly retainer for updates, backups, speed and tracking. Both are fine. Neither is automatic.</p>
-            </details>
+
+          <div class="tl__panel is-active" role="tabpanel" id="tlp-2011" aria-labelledby="tl-2011" tabindex="0">
+            <span class="micro">2011 &middot; placeholder</span>
+            <h3>First lines of production code.</h3>
+            <p>Placeholder copy. Built the first client site end to end and learned that shipping is a different skill from building. Replace with the real milestone.</p>
+          </div>
+          <div class="tl__panel" role="tabpanel" id="tlp-2013" aria-labelledby="tl-2013" tabindex="0">
+            <span class="micro">2013 &middot; placeholder</span>
+            <h3>Went full-time on WordPress.</h3>
+            <p>Placeholder copy. Moved from occasional freelance work to a full book of clients, mostly theme and plugin work. Replace with the real milestone.</p>
+          </div>
+          <div class="tl__panel" role="tabpanel" id="tlp-2015" aria-labelledby="tl-2015" tabindex="0">
+            <span class="micro">2015 &middot; placeholder</span>
+            <h3>First funnel and order form builds.</h3>
+            <p>Placeholder copy. Started taking checkout and upsell work, where a silent failure costs more than the whole build. Replace with the real milestone.</p>
+          </div>
+          <div class="tl__panel" role="tabpanel" id="tlp-2017" aria-labelledby="tl-2017" tabindex="0">
+            <span class="micro">2017 &middot; placeholder</span>
+            <h3>Membership and course platforms.</h3>
+            <p>Placeholder copy. LearnDash and Memberium builds for launches with thousands of simultaneous logins. Replace with the real milestone.</p>
+          </div>
+          <div class="tl__panel" role="tabpanel" id="tlp-2019" aria-labelledby="tl-2019" tabindex="0">
+            <span class="micro">2019 &middot; placeholder</span>
+            <h3>Working directly with launch teams.</h3>
+            <p>Placeholder copy. Became the developer marketing leads brought in when a launch date stopped moving. Replace with the real milestone.</p>
+          </div>
+          <div class="tl__panel" role="tabpanel" id="tlp-2021" aria-labelledby="tl-2021" tabindex="0">
+            <span class="micro">2021 &middot; placeholder</span>
+            <h3>Started the studio.</h3>
+            <p>Placeholder copy. Founded Fixels so larger projects could get more hands without changing who you talk to. Replace with the real milestone.</p>
+          </div>
+          <div class="tl__panel" role="tabpanel" id="tlp-2023" aria-labelledby="tl-2023" tabindex="0">
+            <span class="micro">2023 &middot; placeholder</span>
+            <h3>CRM and automation work.</h3>
+            <p>Placeholder copy. GoHighLevel, Keap and ActiveCampaign integrations alongside the build work. Replace with the real milestone.</p>
+          </div>
+          <div class="tl__panel" role="tabpanel" id="tlp-2026" aria-labelledby="tl-2026" tabindex="0">
+            <span class="micro">Today &middot; placeholder</span>
+            <h3>Seventy-nine client brands later.</h3>
+            <p>Placeholder copy. Still one developer, still in the build, still telling you when a timeline is wrong before we start. Replace with the real milestone.</p>
           </div>
         </div>
       </div>
+        <!--/TIMELINE-->
     </section>
 
     <!-- ============ INQUIRY ============ -->
     <section class="section band-warm" id="inquiry">
       <div class="wrap">
-        <div class="split-5-6">
-          <div class="reveal">
-            <p class="label">start a project</p>
-            <h2>Tell me what you're building.</h2>
-            <p class="lede">Six questions, about two minutes. I read every one myself and reply within one business day — including when it isn't a fit.</p>
-          </div>
-          <!--FORM-->
-<form class="inquiry reveal" id="inquiry-form" name="inquiry" method="POST"
+        <div class="section-head section-head--mid reveal">
+          <h2>Tell me what you're building.</h2>
+          <p class="lede">Three short steps, about two minutes. I read every one myself and reply within one business day — including when it isn't a fit.</p>
+        </div>
+        <!--FORM-->
+<form class="inquiry inquiry--mid reveal" id="inquiry-form" name="inquiry" method="POST"
                 action="thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="inquiry">
             <p class="hp" aria-hidden="true">
               <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
             </p>
 
-            <fieldset class="fieldset">
+            <!-- Step rail. Rendered as real markup so it exists without JS,
+                 where it simply labels the three groups instead of tracking them. -->
+            <ol class="steps" id="steps" aria-hidden="true">
+              <li class="steps__item is-current"><span>1</span> You</li>
+              <li class="steps__item"><span>2</span> The project</li>
+              <li class="steps__item"><span>3</span> Scope</li>
+            </ol>
+
+            <fieldset class="fieldset step" data-step="1">
               <legend><b>(01)</b> <em>you</em></legend>
 
               <label class="field">
@@ -691,14 +1587,14 @@
               </label>
             </fieldset>
 
-            <fieldset class="fieldset">
+            <fieldset class="fieldset step" data-step="2">
               <legend><b>(02)</b> <em>the project</em></legend>
 
               <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
                 <legend class="field__label" style="margin-bottom:var(--s3);font-style:normal;color:var(--text-primary)">
                   What do you need? <span class="field__req">pick any</span>
                 </legend>
-                <div class="choices choices--2" data-required-group="need">
+                <div class="choices choices--2">
                   <label class="choice"><input type="checkbox" name="need" value="Design to build"> Design to build</label>
                   <label class="choice"><input type="checkbox" name="need" value="Funnels and order forms"> Funnels and order forms</label>
                   <label class="choice"><input type="checkbox" name="need" value="Membership or course site"> Membership or course site</label>
@@ -725,7 +1621,7 @@
               </label>
             </fieldset>
 
-            <fieldset class="fieldset">
+            <fieldset class="fieldset step" data-step="3">
               <legend><b>(03)</b> <em>scope</em></legend>
 
               <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
@@ -771,17 +1667,20 @@
               </label>
             </fieldset>
 
-            <div class="form__submit">
-              <button class="btn btn--primary" type="submit">Send inquiry</button>
+            <p class="form__error" id="form-error" role="alert" hidden></p>
+
+            <div class="form__nav">
+              <button class="btn btn--ghost" type="button" id="form-back" hidden>&larr; Back</button>
+              <button class="btn btn--primary" type="button" id="form-next" hidden>Continue &rarr;</button>
+              <button class="btn btn--primary" type="submit" id="form-send">Send inquiry</button>
               <span class="form__count" id="form-count" aria-live="polite">0 of 6 answered</span>
             </div>
             <p class="form__note" style="margin-top:var(--s4)">No mailing list, no sequence. Just a reply from me.</p>
             <p class="form__note" style="margin-top:var(--s2)">
-              Rather just email? <a class="link-arrow" href="mailto:hello@marvinbalmaceda.com">hello@marvinbalmaceda.com</a>
+              Rather just email? <a class="link-arrow" href="mailto:balmacedamarvin@gmail.com">balmacedamarvin@gmail.com</a>
             </p>
           </form>
         <!--/FORM-->
-        </div>
       </div>
     </section>
 
@@ -1273,43 +2172,18 @@
 
 <!--FOOTER-->
 <footer class="footer">
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span>Let's work together&nbsp;&middot;</span><span>Let's work together&nbsp;&middot;</span>
-      <span>Let's work together&nbsp;&middot;</span><span>Let's work together&nbsp;&middot;</span>
-      <span>Let's work together&nbsp;&middot;</span><span>Let's work together&nbsp;&middot;</span>
-    </div>
-  </div>
-  <div class="footer__glow" aria-hidden="true"></div>
   <div class="wrap footer__inner">
-    <div class="footer__grid">
-      <div>
-        <h2>Marvin Balmaceda</h2>
-        <p style="color:var(--ink-text-dim); max-width:30ch">Web development for personal brands, since 2014.</p>
-        <p style="margin-top:var(--s4)"><a href="mailto:hello@marvinbalmaceda.com">hello@marvinbalmaceda.com</a></p>
-      </div>
-      <div>
-        <h2 class="micro">Pages</h2>
-        <ul class="footer__nav">
-          <li><a href="work.html">Work</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="start.html">Start a project</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="micro">Elsewhere</h2>
-        <ul class="footer__nav">
-          <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://fixels.agency/" rel="noopener">Studio: Fixels</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-        </ul>
-      </div>
+    <div class="footer__top">
+      <a class="footer__mark" href="index.html">Marvin Balmaceda</a>
+      <ul class="footer__nav">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="start.html">Start a project</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
     </div>
-    <div class="footer__base micro">
-      <span>&copy; 2026 Marvin Balmaceda</span>
-      <span>MANILA &middot; UTC+8 &middot; DAILY OVERLAP WITH US TEAMS</span>
-    </div>
+    <p class="footer__base micro">&copy; 2026 All Rights Reserved. Marvin Balmaceda</p>
   </div>
 </footer>
         <!--/FOOTER-->

@@ -1,0 +1,57 @@
+<div class="wrap">
+        <div class="section-head section-head--mid reveal">
+          <h2>What my clients have to say about me.</h2>
+        </div>
+
+        <!-- The <video> keeps its native controls, so with JS off this is an
+             ordinary player. The poster overlay ships hidden and is revealed by
+             JS, which is what makes the facade progressive rather than required. -->
+        <div class="vfacade reveal" data-vfacade>
+          <video id="testimonial-video" controls playsinline preload="none"
+                 poster="video/james-guldan-poster.jpg" width="480" height="272">
+            <source src="video/james-guldan.mp4" type="video/mp4">
+            <track kind="captions" src="video/james-guldan.vtt" srclang="en" label="English">
+            Your browser can't play this video. <a href="video/james-guldan.mp4">Download it instead.</a>
+          </video>
+          <button class="vfacade__cover" type="button" hidden
+                  aria-label="Play the video testimonial from James Guldan">
+            <img src="video/james-guldan-poster.jpg" alt="" loading="lazy" decoding="async">
+            <span class="vfacade__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="vfacade__caption">
+              <strong>James Guldan</strong>
+              <span>Owner / Founder, Magic Agency &middot; one minute</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="testi-grid">
+          <figure class="testi reveal">
+            <span class="testi__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote><p>Marvin is an expert at his craft and his timeliness is superior. I highly recommend him to anyone interested in his website and integration skills. He is also a great person to work with and a wonderful communicator.</p></blockquote>
+            <figcaption class="testi__who">
+              <strong>Nikky Kho</strong>
+              <span>CEO, Real AI Dynamics</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testi reveal" style="--reveal-delay:60ms">
+            <span class="testi__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote><p>Working with Marvin has been seamless. He's not just technically solid — he's proactive, responsive and solution-oriented. I never had to follow up or micro-manage. If you're a founder looking for a reliable web developer who thinks like a team member, not just a freelancer, Marvin's your guy.</p></blockquote>
+            <figcaption class="testi__who">
+              <strong>Phil Neil</strong>
+              <span>CEO, Founders Compass</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testi reveal" style="--reveal-delay:120ms">
+            <span class="testi__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote><p>I am very happy with the website that Marvin and his team built for me. I was most impressed with the speed of iteration. Marvin is an excellent communicator and got the project done on budget and on time. Highly recommend.</p></blockquote>
+            <figcaption class="testi__who">
+              <strong>Gareth Herman</strong>
+              <span>Exited Founder, FORCE22</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>

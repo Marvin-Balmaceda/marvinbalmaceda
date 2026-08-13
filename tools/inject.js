@@ -41,6 +41,9 @@ const blocks = {
   CARDS_ALL: gen('cards'),
   PANELS: gen('panels'),
   NAMES: gen('names'),
+  MARQUEE: gen('marquee'),
+  TESTIMONIALS: partial('testimonials'),
+  TIMELINE: partial('timeline'),
   FORM: partial('form'),
   /* Shared chrome. Duplicated into every page so the shipped HTML is complete
      and crawlable — but authored once here, so a nav change is one edit. */
@@ -57,12 +60,12 @@ blocks.HERO_CARD = blocks.CARDS_HOME.split('</article>')[0] + '</article>';
 const common = { HEAD: blocks.HEAD, NAV: blocks.NAV, FOOTER: blocks.FOOTER };
 
 const targets = {
-  'index.html': { CARDS: blocks.CARDS_HOME, PANELS: blocks.PANELS,
+  'index.html': { MARQUEE: blocks.MARQUEE, PANELS: blocks.PANELS,
                   NAMES: blocks.NAMES, FORM: blocks.FORM,
-                  HERO_CARD: blocks.HERO_CARD },
+                  TESTIMONIALS: blocks.TESTIMONIALS, TIMELINE: blocks.TIMELINE },
   'work.html': { CARDS: blocks.CARDS_ALL, PANELS: blocks.PANELS, NAMES: blocks.NAMES },
   'services.html': {},
-  'about.html': {},
+  'about.html': { TESTIMONIALS: blocks.TESTIMONIALS, TIMELINE: blocks.TIMELINE },
   'start.html': { FORM: blocks.FORM },
   'thank-you.html': {},
   'privacy.html': {},

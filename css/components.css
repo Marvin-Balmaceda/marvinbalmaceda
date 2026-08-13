@@ -59,17 +59,23 @@
 
 /* ---- Nav ------------------------------------------------------------------ */
 
+/* Transparent at rest so it sits on the hero's faceted ground without a seam;
+   it only takes a background once there is scrolled content to separate from. */
 .nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--bg-base) 82%, transparent);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--t-state) var(--e-state),
+              border-color var(--t-state) var(--e-state);
+}
+.nav.is-stuck {
+  background: color-mix(in srgb, var(--bg-base) 84%, transparent);
   backdrop-filter: blur(14px) saturate(1.4);
   -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--t-state) var(--e-state);
+  border-bottom-color: var(--border-hairline);
 }
-.nav.is-stuck { border-bottom-color: var(--border-hairline); }
 
 .nav__inner {
   display: flex;
@@ -180,7 +186,7 @@
 .work-card__link {
   display: block;
   background: var(--bg-card);
-  border: 1px solid var(--ink-border);
+  border: 1px solid var(--border-default);
   border-radius: var(--r-md);
   overflow: hidden;
   text-decoration: none;
@@ -189,7 +195,7 @@
               box-shadow var(--t-state) var(--e-state),
               transform var(--t-state) var(--e-state);
 }
-.band-ink .work-card__link { background: #12171F; }
+.band-ink .work-card__link { background: #3A3331; }
 
 .work-card__link:hover,
 .work-card__link:focus-visible {
@@ -210,17 +216,17 @@
   font-size: var(--fs-micro);
   letter-spacing: .04em;
   text-transform: uppercase;
-  color: var(--ink-text-dim);
+  color: var(--text-muted);
 }
-.work-card__chrome { border-bottom: 1px solid var(--ink-hairline); }
-.work-card__spec   { border-top: 1px solid var(--ink-hairline); }
-.work-card__client { color: var(--ink-text); overflow: hidden;
+.work-card__chrome { border-bottom: 1px solid var(--border-hairline); }
+.work-card__spec   { border-top: 1px solid var(--border-hairline); }
+.work-card__client { color: var(--text-primary); overflow: hidden;
                      text-overflow: ellipsis; white-space: nowrap; }
 .work-card__cat, .work-card__view { flex: none; }
 
 /* The page-height label: true, and it turns the tall-aspect-ratio liability
    into a spec — the same instinct as a photographer printing the focal length. */
-.work-card__height { color: var(--accent); }
+.work-card__height { color: var(--accent-text); }
 .work-card__view   { opacity: 0; transition: opacity var(--t-state) var(--e-state); }
 .work-card__link:hover .work-card__view,
 .work-card__link:focus-visible .work-card__view { opacity: 1; }
@@ -282,12 +288,13 @@
   gap: var(--s2);
   margin-bottom: var(--s8);
 }
+.filters--mid { justify-content: center; }
 .chip {
   padding: .5rem 1rem;
-  border: 1px solid var(--ink-border);
-  border-radius: var(--r-sm);
-  background: transparent;
-  color: var(--ink-text-dim);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-pill);
+  background: var(--bg-base);
+  color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: var(--fs-data);
   letter-spacing: .05em;
@@ -297,11 +304,11 @@
               border-color var(--t-micro) var(--e-state),
               background var(--t-micro) var(--e-state);
 }
-.chip:hover { color: var(--ink-text); border-color: var(--ink-text-dim); }
+.chip:hover { color: var(--text-primary); border-color: var(--border-strong); }
 .chip[aria-pressed="true"] {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-wash);
+  color: #FFF;
+  border-color: var(--brand-deep);
+  background: var(--brand-deep);
 }
 
 /* ---- Lightbox ------------------------------------------------------------
@@ -354,7 +361,7 @@
 .lightbox__close {
   flex: none;
   padding: .5rem 1rem;
-  border: 1px solid var(--ink-border);
+  border: 1px solid var(--border-default);
   border-radius: var(--r-pill);
   color: var(--ink-text);
   font-size: var(--fs-sm);

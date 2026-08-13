@@ -65,7 +65,6 @@
       <div class="wrap">
         <div class="split-5-6">
           <div>
-            <p class="label">start a project</p>
             <h1>Tell me what you're building.</h1>
             <p class="lede">Six questions, about two minutes. I read every one myself and reply within one business day — including when it isn't a fit.</p>
             <div class="card" style="margin-top:var(--s8)">
@@ -79,14 +78,22 @@
             </div>
           </div>
           <!--FORM-->
-<form class="inquiry reveal" id="inquiry-form" name="inquiry" method="POST"
+<form class="inquiry inquiry--mid reveal" id="inquiry-form" name="inquiry" method="POST"
                 action="thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="inquiry">
             <p class="hp" aria-hidden="true">
               <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
             </p>
 
-            <fieldset class="fieldset">
+            <!-- Step rail. Rendered as real markup so it exists without JS,
+                 where it simply labels the three groups instead of tracking them. -->
+            <ol class="steps" id="steps" aria-hidden="true">
+              <li class="steps__item is-current"><span>1</span> You</li>
+              <li class="steps__item"><span>2</span> The project</li>
+              <li class="steps__item"><span>3</span> Scope</li>
+            </ol>
+
+            <fieldset class="fieldset step" data-step="1">
               <legend><b>(01)</b> <em>you</em></legend>
 
               <label class="field">
@@ -106,14 +113,14 @@
               </label>
             </fieldset>
 
-            <fieldset class="fieldset">
+            <fieldset class="fieldset step" data-step="2">
               <legend><b>(02)</b> <em>the project</em></legend>
 
               <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
                 <legend class="field__label" style="margin-bottom:var(--s3);font-style:normal;color:var(--text-primary)">
                   What do you need? <span class="field__req">pick any</span>
                 </legend>
-                <div class="choices choices--2" data-required-group="need">
+                <div class="choices choices--2">
                   <label class="choice"><input type="checkbox" name="need" value="Design to build"> Design to build</label>
                   <label class="choice"><input type="checkbox" name="need" value="Funnels and order forms"> Funnels and order forms</label>
                   <label class="choice"><input type="checkbox" name="need" value="Membership or course site"> Membership or course site</label>
@@ -140,7 +147,7 @@
               </label>
             </fieldset>
 
-            <fieldset class="fieldset">
+            <fieldset class="fieldset step" data-step="3">
               <legend><b>(03)</b> <em>scope</em></legend>
 
               <fieldset class="field" style="border:0;padding:0;margin-bottom:var(--s6)">
@@ -186,13 +193,17 @@
               </label>
             </fieldset>
 
-            <div class="form__submit">
-              <button class="btn btn--primary" type="submit">Send inquiry</button>
+            <p class="form__error" id="form-error" role="alert" hidden></p>
+
+            <div class="form__nav">
+              <button class="btn btn--ghost" type="button" id="form-back" hidden>&larr; Back</button>
+              <button class="btn btn--primary" type="button" id="form-next" hidden>Continue &rarr;</button>
+              <button class="btn btn--primary" type="submit" id="form-send">Send inquiry</button>
               <span class="form__count" id="form-count" aria-live="polite">0 of 6 answered</span>
             </div>
             <p class="form__note" style="margin-top:var(--s4)">No mailing list, no sequence. Just a reply from me.</p>
             <p class="form__note" style="margin-top:var(--s2)">
-              Rather just email? <a class="link-arrow" href="mailto:hello@marvinbalmaceda.com">hello@marvinbalmaceda.com</a>
+              Rather just email? <a class="link-arrow" href="mailto:balmacedamarvin@gmail.com">balmacedamarvin@gmail.com</a>
             </p>
           </form>
         <!--/FORM-->
@@ -203,43 +214,18 @@
 </div>
 <!--FOOTER-->
 <footer class="footer">
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span>Let's work together&nbsp;&middot;</span><span>Let's work together&nbsp;&middot;</span>
-      <span>Let's work together&nbsp;&middot;</span><span>Let's work together&nbsp;&middot;</span>
-      <span>Let's work together&nbsp;&middot;</span><span>Let's work together&nbsp;&middot;</span>
-    </div>
-  </div>
-  <div class="footer__glow" aria-hidden="true"></div>
   <div class="wrap footer__inner">
-    <div class="footer__grid">
-      <div>
-        <h2>Marvin Balmaceda</h2>
-        <p style="color:var(--ink-text-dim); max-width:30ch">Web development for personal brands, since 2014.</p>
-        <p style="margin-top:var(--s4)"><a href="mailto:hello@marvinbalmaceda.com">hello@marvinbalmaceda.com</a></p>
-      </div>
-      <div>
-        <h2 class="micro">Pages</h2>
-        <ul class="footer__nav">
-          <li><a href="work.html">Work</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="start.html">Start a project</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="micro">Elsewhere</h2>
-        <ul class="footer__nav">
-          <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://fixels.agency/" rel="noopener">Studio: Fixels</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-        </ul>
-      </div>
+    <div class="footer__top">
+      <a class="footer__mark" href="index.html">Marvin Balmaceda</a>
+      <ul class="footer__nav">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="start.html">Start a project</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
     </div>
-    <div class="footer__base micro">
-      <span>&copy; 2026 Marvin Balmaceda</span>
-      <span>MANILA &middot; UTC+8 &middot; DAILY OVERLAP WITH US TEAMS</span>
-    </div>
+    <p class="footer__base micro">&copy; 2026 All Rights Reserved. Marvin Balmaceda</p>
   </div>
 </footer>
         <!--/FOOTER-->

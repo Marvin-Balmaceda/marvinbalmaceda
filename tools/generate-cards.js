@@ -64,6 +64,52 @@ function card(item, i, eager) {
         </article>`;
 }
 
+/* ---- Diagonal marquee wall ------------------------------------------------
+   A vanilla port of the React DiagonalMarqueeCarousel: five rows on a -25deg
+   rotation, alternating direction, staggered speeds, hover to pause.
+
+   Row composition matters for DOM weight. The original triples the full set and
+   renders it twice per row — 720 nodes at our 24 pieces. Instead each row takes
+   a 12-piece window at a different offset, duplicated once for the seamless
+   -50% loop: 24 nodes a row, 120 total, and still only 24 unique images for the
+   browser to fetch. One window (~5,200px) already exceeds 200vw, so the loop
+   never shows a gap. */
+const ROWS = [
+  { offset: 0,  dir: 'left',  speed: 120 },
+  { offset: 12, dir: 'right', speed: 105, reverse: true },
+  { offset: 6,  dir: 'left',  speed: 135 },
+  { offset: 18, dir: 'right', speed: 114, reverse: true },
+  { offset: 3,  dir: 'left',  speed: 144 },
+];
+const WINDOW = 12;
+
+function mqCard(item, dup) {
+  return `          <a class="mq-card" href="#p-${item.slug}" data-piece="${item.slug}"${dup ? ' aria-hidden="true" tabindex="-1"' : ''}>
+            <picture>
+              <source srcset="img/work/${item.slug}.avif" type="image/avif">
+              <source srcset="img/work/${item.slug}.webp" type="image/webp">
+              <img src="img/work/${item.slug}.jpg" alt="${dup ? '' : esc(item.alt)}"
+                   width="${item.cardW}" height="${item.cardH}" loading="lazy" decoding="async">
+            </picture>
+            <span class="mq-card__label">${esc(item.client)}</span>
+          </a>`;
+}
+
+function marquee() {
+  return ROWS.map((row) => {
+    let win = Array.from({ length: WINDOW },
+      (_, i) => data[(row.offset + i) % data.length]);
+    if (row.reverse) win = win.reverse();
+    const half = (dup) => win.map((it) => mqCard(it, dup)).join('\n');
+    return `      <div class="mq-row">
+        <div class="mq-track mq-track--${row.dir}" style="--speed:${row.speed}s">
+${half(false)}
+${half(true)}
+        </div>
+      </div>`;
+  }).join('\n');
+}
+
 /* The lightbox panels double as the no-JS fallback: each is a :target section
    holding the full capture. They are display:none until targeted, so browsers
    never fetch those images until one is actually opened. */
@@ -139,6 +185,8 @@ if (mode === 'cards') {
   console.log(set.map((it, i) => card(it, i, 3)).join('\n'));
 } else if (mode === 'panels') {
   console.log(set.map(panel).join('\n'));
+} else if (mode === 'marquee') {
+  console.log(marquee());
 } else if (mode === 'names') {
   console.log('        ' + names());
 } else if (mode === 'counts') {
@@ -154,5 +202,5 @@ if (mode === 'cards') {
   const missing = data.filter((d) => !d.role).length;
   if (missing) console.log(`\nNOTE: ${missing}/${data.length} pieces have no role/credit set.`);
 } else {
-  console.log('usage: generate-cards.js cards [9] | panels | counts');
+  console.log('usage: generate-cards.js cards [9] | panels | marquee | names | counts');
 }
