@@ -4,25 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About Marvin Balmaceda — web developer since 2014</title>
-<meta name="description" content="A decade as the developer behind personal brands. One person, no hand-offs, thirty-one platforms, daily overlap with US teams from Manila.">
+<meta name="description" content="Fifteen years as the developer behind personal brands. One person, no hand-offs, thirty-one platforms, daily overlap with US teams from Manila.">
 <link rel="canonical" href="https://marvinbalmaceda.com/about.html">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://marvinbalmaceda.com/about.html">
-<meta property="og:title" content="About Marvin Balmaceda">
-<meta property="og:description" content="A decade as the developer behind personal brands. One person, no hand-offs.">
+<meta property="og:title" content="About Marvin Balmaceda — web developer since 2014">
+<meta property="og:description" content="Fifteen years as the developer behind personal brands. One person, no hand-offs, thirty-one platforms, daily overlap with US teams from Manila.">
 <meta property="og:image" content="https://marvinbalmaceda.com/img/og/og-about.jpg">
+<meta property="og:image:alt" content="Portrait of Marvin Balmaceda">
+<meta name="twitter:title" content="About Marvin Balmaceda — web developer since 2014">
+<meta name="twitter:description" content="Fifteen years as the developer behind personal brands. One person, no hand-offs, thirty-one platforms, daily overlap with US teams from Manila.">
+<meta name="twitter:image" content="https://marvinbalmaceda.com/img/og/og-about.jpg">
 <!--HEAD-->
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0B0E14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFCF8">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Marvin Balmaceda">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
 
 <!-- Theme, resolved before first paint so there is no flash of the wrong one.
      Kept inline and tiny on purpose: an external file would race the stylesheet. -->
 <script>
   (function () {
-    var t = localStorage.getItem('theme');
-    if (t) document.documentElement.dataset.theme = t;
+    /* Light by default; an explicit choice in localStorage wins. Always writing
+       the attribute keeps the toggle's read simple later on. */
+    document.documentElement.dataset.theme = localStorage.getItem('theme') || 'light';
     document.documentElement.className = 'js';
   })();
 </script>
@@ -34,6 +43,8 @@
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
         <!--/HEAD-->
 </head>
 
@@ -163,62 +174,87 @@
           <h2>Fifteen years, one trade.</h2>
           <p class="lede">From a first WordPress theme to launch weeks for brands you already know.</p>
         </div>
+      </div>
 
-        <!-- PLACEHOLDER CONTENT — years and copy are dummy text pending the real
-             milestones. Structure and behaviour are final. -->
-        <div class="tl reveal" id="timeline">
-          <div class="tl__rail" role="tablist" aria-label="Career timeline">
-            <button class="tl__year" role="tab" id="tl-2011" aria-controls="tlp-2011" aria-selected="true" tabindex="0">2011</button>
-            <button class="tl__year" role="tab" id="tl-2013" aria-controls="tlp-2013" aria-selected="false" tabindex="-1">2013</button>
-            <button class="tl__year" role="tab" id="tl-2015" aria-controls="tlp-2015" aria-selected="false" tabindex="-1">2015</button>
-            <button class="tl__year" role="tab" id="tl-2017" aria-controls="tlp-2017" aria-selected="false" tabindex="-1">2017</button>
-            <button class="tl__year" role="tab" id="tl-2019" aria-controls="tlp-2019" aria-selected="false" tabindex="-1">2019</button>
-            <button class="tl__year" role="tab" id="tl-2021" aria-controls="tlp-2021" aria-selected="false" tabindex="-1">2021</button>
-            <button class="tl__year" role="tab" id="tl-2023" aria-controls="tlp-2023" aria-selected="false" tabindex="-1">2023</button>
-            <button class="tl__year" role="tab" id="tl-2026" aria-controls="tlp-2026" aria-selected="false" tabindex="-1">Today</button>
-          </div>
+      <!-- PLACEHOLDER COPY — the years and prose are dummy text pending the real
+           milestones. Structure, imagery and behaviour are final. -->
+      <div class="tline" id="timeline">
 
-          <div class="tl__panel is-active" role="tabpanel" id="tlp-2011" aria-labelledby="tl-2011" tabindex="0">
-            <span class="micro">2011 &middot; placeholder</span>
-            <h3>First lines of production code.</h3>
-            <p>Placeholder copy. Built the first client site end to end and learned that shipping is a different skill from building. Replace with the real milestone.</p>
+        <article class="tline__item">
+          <div class="tline__side"><span class="tline__dot" aria-hidden="true"></span><h3 class="tline__year">2011</h3></div>
+          <div class="tline__body">
+            <h3 class="tline__year tline__year--m">2011</h3>
+            <p>Placeholder copy. Built the first client site end to end and learned that shipping is a different skill from building.</p>
+            <div class="tline__grid">
+              <img src="img/work/frank-kern.avif" alt="Frank Kern — website built by Marvin Balmaceda" width="760" height="1372" loading="lazy" decoding="async">
+              <img src="img/work/dean-graziosi.avif" alt="Dean Graziosi — website built by Marvin Balmaceda" width="760" height="1250" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="tl__panel" role="tabpanel" id="tlp-2013" aria-labelledby="tl-2013" tabindex="0">
-            <span class="micro">2013 &middot; placeholder</span>
-            <h3>Went full-time on WordPress.</h3>
-            <p>Placeholder copy. Moved from occasional freelance work to a full book of clients, mostly theme and plugin work. Replace with the real milestone.</p>
+        </article>
+
+        <article class="tline__item">
+          <div class="tline__side"><span class="tline__dot" aria-hidden="true"></span><h3 class="tline__year">2015</h3></div>
+          <div class="tline__body">
+            <h3 class="tline__year tline__year--m">2015</h3>
+            <p>Placeholder copy. Started taking checkout and upsell work, where a silent failure costs more than the whole build.</p>
+            <ul class="tline__list">
+              <li>Sales pages and order forms</li>
+              <li>Upsell and downsell paths tested end to end</li>
+              <li>Tracking wired to the right events</li>
+            </ul>
+            <div class="tline__grid">
+              <img src="img/work/grillmaster.avif" alt="Grillmaster University — website built by Marvin Balmaceda" width="760" height="2337" loading="lazy" decoding="async">
+              <img src="img/work/lifeboost-coffee.avif" alt="Lifeboost Coffee — website built by Marvin Balmaceda" width="760" height="2527" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="tl__panel" role="tabpanel" id="tlp-2015" aria-labelledby="tl-2015" tabindex="0">
-            <span class="micro">2015 &middot; placeholder</span>
-            <h3>First funnel and order form builds.</h3>
-            <p>Placeholder copy. Started taking checkout and upsell work, where a silent failure costs more than the whole build. Replace with the real milestone.</p>
+        </article>
+
+        <article class="tline__item">
+          <div class="tline__side"><span class="tline__dot" aria-hidden="true"></span><h3 class="tline__year">2019</h3></div>
+          <div class="tline__body">
+            <h3 class="tline__year tline__year--m">2019</h3>
+            <p>Placeholder copy. Became the developer marketing leads brought in when a launch date stopped moving — membership portals, course platforms, four thousand simultaneous logins.</p>
+            <div class="tline__grid">
+              <img src="img/work/dropship-club.avif" alt="The Dropship Club — website built by Marvin Balmaceda" width="760" height="2067" loading="lazy" decoding="async">
+              <img src="img/work/wellorg-series.avif" alt="Well Org Interconnected Series — website built by Marvin Balmaceda" width="760" height="1995" loading="lazy" decoding="async">
+              <img src="img/work/certus-trading.avif" alt="Certus Trading — website built by Marvin Balmaceda" width="760" height="2381" loading="lazy" decoding="async">
+              <img src="img/work/bodyfx.avif" alt="BodyFX — website built by Marvin Balmaceda" width="760" height="1795" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="tl__panel" role="tabpanel" id="tlp-2017" aria-labelledby="tl-2017" tabindex="0">
-            <span class="micro">2017 &middot; placeholder</span>
-            <h3>Membership and course platforms.</h3>
-            <p>Placeholder copy. LearnDash and Memberium builds for launches with thousands of simultaneous logins. Replace with the real milestone.</p>
+        </article>
+
+        <article class="tline__item">
+          <div class="tline__side"><span class="tline__dot" aria-hidden="true"></span><h3 class="tline__year">2023</h3></div>
+          <div class="tline__body">
+            <h3 class="tline__year tline__year--m">2023</h3>
+            <p>Placeholder copy. CRM and automation work alongside the builds — GoHighLevel, Keap and ActiveCampaign, mapped before anything was wired.</p>
+            <div class="tline__grid">
+              <img src="img/work/jj-virgin.avif" alt="JJ Virgin — website built by Marvin Balmaceda" width="760" height="1481" loading="lazy" decoding="async">
+              <img src="img/work/david-bach.avif" alt="David Bach — website built by Marvin Balmaceda" width="760" height="1690" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="tl__panel" role="tabpanel" id="tlp-2019" aria-labelledby="tl-2019" tabindex="0">
-            <span class="micro">2019 &middot; placeholder</span>
-            <h3>Working directly with launch teams.</h3>
-            <p>Placeholder copy. Became the developer marketing leads brought in when a launch date stopped moving. Replace with the real milestone.</p>
+        </article>
+
+        <article class="tline__item">
+          <div class="tline__side"><span class="tline__dot" aria-hidden="true"></span><h3 class="tline__year">Today</h3></div>
+          <div class="tline__body">
+            <h3 class="tline__year tline__year--m">Today</h3>
+            <p>Placeholder copy. Seventy-nine client brands later — still one developer, still in the build, still telling you when a timeline is wrong before we start.</p>
+            <ul class="tline__list">
+              <li>79 client brands since 2014</li>
+              <li>24 builds in the gallery</li>
+              <li>31 platforms already shipped on</li>
+            </ul>
+            <div class="tline__grid">
+              <img src="img/work/ocean-unite.avif" alt="Ocean Unite — website built by Marvin Balmaceda" width="760" height="1590" loading="lazy" decoding="async">
+              <img src="img/work/revolution-golf.avif" alt="Revolution Golf — website built by Marvin Balmaceda" width="760" height="1914" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="tl__panel" role="tabpanel" id="tlp-2021" aria-labelledby="tl-2021" tabindex="0">
-            <span class="micro">2021 &middot; placeholder</span>
-            <h3>Started the studio.</h3>
-            <p>Placeholder copy. Founded Fixels so larger projects could get more hands without changing who you talk to. Replace with the real milestone.</p>
-          </div>
-          <div class="tl__panel" role="tabpanel" id="tlp-2023" aria-labelledby="tl-2023" tabindex="0">
-            <span class="micro">2023 &middot; placeholder</span>
-            <h3>CRM and automation work.</h3>
-            <p>Placeholder copy. GoHighLevel, Keap and ActiveCampaign integrations alongside the build work. Replace with the real milestone.</p>
-          </div>
-          <div class="tl__panel" role="tabpanel" id="tlp-2026" aria-labelledby="tl-2026" tabindex="0">
-            <span class="micro">Today &middot; placeholder</span>
-            <h3>Seventy-nine client brands later.</h3>
-            <p>Placeholder copy. Still one developer, still in the build, still telling you when a timeline is wrong before we start. Replace with the real milestone.</p>
-          </div>
-        </div>
+        </article>
+
+        <!-- The rail. --fill is written by JS from scroll progress; with no JS
+             it simply stays at 0 and the static track remains. -->
+        <div class="tline__rail" aria-hidden="true"><span class="tline__fill"></span></div>
       </div>
         <!--/TIMELINE-->
     </section>

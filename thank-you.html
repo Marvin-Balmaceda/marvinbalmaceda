@@ -4,20 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Got it — Marvin Balmaceda</title>
-<meta name="description" content="Your inquiry came through.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Your inquiry came through. I read every one myself and reply within one business day.">
+<link rel="canonical" href="https://marvinbalmaceda.com/thank-you.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marvinbalmaceda.com/thank-you.html">
+<meta property="og:title" content="Got it — Marvin Balmaceda">
+<meta property="og:description" content="Your inquiry came through. I read every one myself and reply within one business day.">
+<meta property="og:image" content="https://marvinbalmaceda.com/img/og/og-home.jpg">
+<meta property="og:image:alt" content="Marvin Balmaceda">
+<meta name="twitter:title" content="Got it — Marvin Balmaceda">
+<meta name="twitter:description" content="Your inquiry came through. I read every one myself and reply within one business day.">
+<meta name="twitter:image" content="https://marvinbalmaceda.com/img/og/og-home.jpg">
 <!--HEAD-->
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0B0E14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFCF8">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Marvin Balmaceda">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
 
 <!-- Theme, resolved before first paint so there is no flash of the wrong one.
      Kept inline and tiny on purpose: an external file would race the stylesheet. -->
 <script>
   (function () {
-    var t = localStorage.getItem('theme');
-    if (t) document.documentElement.dataset.theme = t;
+    /* Light by default; an explicit choice in localStorage wins. Always writing
+       the attribute keeps the toggle's read simple later on. */
+    document.documentElement.dataset.theme = localStorage.getItem('theme') || 'light';
     document.documentElement.className = 'js';
   })();
 </script>
@@ -29,6 +44,8 @@
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
         <!--/HEAD-->
 </head>
 <body>

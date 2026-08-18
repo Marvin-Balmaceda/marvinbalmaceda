@@ -108,45 +108,60 @@
     video.addEventListener('ended', function () { cover.hidden = false; });
   });
 
-  /* ---- Timeline tabs ------------------------------------------------------
-     Full tablist semantics: roving tabindex, arrow/Home/End keys, and only the
-     selected panel exposed. Without JS the .is-tabbed class is never added and
-     every panel renders in sequence as a plain chronology. */
+  /* ---- Scroll timeline ----------------------------------------------------
+     Vanilla replacement for Framer Motion's useScroll/useTransform: the rail's
+     fill height is just scroll progress through the timeline, written to a CSS
+     custom property. Reads are batched into rAF so the scroll handler never
+     does layout work per event, and the observer means it only runs while the
+     section is actually on screen. Without JS the rail stays unfilled. */
   var tl = $('#timeline');
   if (tl) {
-    /* Deliberately tl-prefixed. This file is one IIFE and `var` is
-       function-scoped, so a plain `panels` here is the SAME binding the
-       lightbox declares further down — by click time this closure would be
-       toggling lightbox sections instead of timeline panels. */
-    var tlTabs = $$('.tl__year', tl);
-    var tlPanels = $$('.tl__panel', tl);
-    if (tlTabs.length && tlTabs.length === tlPanels.length) {
-      tl.classList.add('is-tabbed');
+    var fill = $('.tline__fill', tl);
+    var items = $$('.tline__item', tl);
 
-      var select = function (i, focus) {
-        tlTabs.forEach(function (t, n) {
-          t.setAttribute('aria-selected', String(n === i));
-          t.tabIndex = n === i ? 0 : -1;
+    /* Only wire the JS path where scroll-driven CSS is unavailable. Where it
+       is supported the animation is already running off the main thread, and
+       adding a scroll listener on top would be duplicated work. */
+    var cssDriven = window.CSS && CSS.supports && CSS.supports('animation-timeline: view()');
+
+    if (fill && !reduced && !cssDriven) {
+      var ticking = false;
+
+      var paint = function () {
+        ticking = false;
+        var r = tl.getBoundingClientRect();
+        var vh = innerHeight;
+        /* Progress from the moment the timeline's top reaches 10% down the
+           viewport until its end passes the midpoint — the window the original
+           expressed as offset: ["start 10%", "end 50%"]. */
+        var start = vh * 0.1;
+        var span = r.height - (vh * 0.5) + start;
+        var p = span > 0 ? (start - r.top) / span : 0;
+        p = Math.max(0, Math.min(1, p));
+        fill.style.setProperty('--fill', p * 100 + '%');
+
+        /* Light up each entry once the fill has reached its dot. */
+        var reached = r.top + r.height * p;
+        items.forEach(function (it) {
+          var d = it.querySelector('.tline__dot');
+          if (d) it.classList.toggle('is-passed', d.getBoundingClientRect().top <= reached);
         });
-        tlPanels.forEach(function (p, n) { p.classList.toggle('is-active', n === i); });
-        if (focus) {
-          tlTabs[i].focus();
-          tlTabs[i].scrollIntoView({ inline: 'nearest', block: 'nearest',
-                                     behavior: reduced ? 'auto' : 'smooth' });
-        }
       };
 
-      tlTabs.forEach(function (tab, i) {
-        tab.addEventListener('click', function () { select(i); });
-        tab.addEventListener('keydown', function (e) {
-          var last = tlTabs.length - 1, to = null;
-          if (e.key === 'ArrowRight') to = i === last ? 0 : i + 1;
-          else if (e.key === 'ArrowLeft') to = i === 0 ? last : i - 1;
-          else if (e.key === 'Home') to = 0;
-          else if (e.key === 'End') to = last;
-          if (to !== null) { e.preventDefault(); select(to, true); }
-        });
-      });
+      /* No IntersectionObserver gate here on purpose. Gating the handler on an
+         observer meant one missed callback left the rail frozen at 0% for the
+         whole page. rAF throttling already keeps this to one layout read per
+         frame, which is cheap enough to just always run. */
+      var onScroll = function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+      };
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', onScroll, { passive: true });
+      paint();
+    } else if (fill) {
+      /* Reduced motion: show the rail complete rather than animating it. */
+      fill.style.setProperty('--fill', '100%');
+      items.forEach(function (it) { it.classList.add('is-passed'); });
     }
   }
 

@@ -69,9 +69,10 @@
   line-height: .75;                            /* 130px advance on a 174px face */
   letter-spacing: -.03em;
   text-transform: uppercase;
-  /* Solid maroon on the pale ground; flips to bone on dark, where maroon is
-     unreadable at any weight. */
-  color: light-dark(#322C2B, #F3E7D6);
+  /* #3A1011 is sampled from the shirt in the portrait, so the name and the
+     figure carry the same colour. 13.6:1 on the hero ground. It flips to bone
+     on dark, where that maroon measures 1.1:1 and is unreadable at any weight. */
+  color: light-dark(#3A1011, #F3E7D6);
   margin-bottom: .34em;
 }
 
@@ -117,6 +118,12 @@
 }
 .hero__links a {
   color: inherit;
+  /* Padding, not font-size: the type stays at the reduced size you asked for
+     while the tap target clears the 24px WCAG 2.5.8 minimum. The negative
+     margin keeps the row's visual rhythm unchanged. */
+  display: inline-block;
+  padding-block: .45rem;
+  margin-block: -.45rem;
   text-decoration: underline;
   text-underline-offset: .28em;
   text-decoration-thickness: 1px;
@@ -371,7 +378,6 @@
   width: 400px;
   height: 300px;
   margin-right: 2rem;
-  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .45);
   text-decoration: none;
@@ -539,82 +545,181 @@
   opacity: .8;
 }
 
-/* ---- Interactive timeline ------------------------------------------------
-   A real tablist: arrow keys move between years, and only the selected panel
-   is in the accessibility tree. Without JS every panel renders in sequence, so
-   the section degrades to a plain chronological list. */
+/* ---- Scroll timeline -----------------------------------------------------
+   Vanilla port of the Framer Motion Timeline. The library was only being used
+   to map scroll progress onto one element's height, which is a CSS custom
+   property here — so this ships no runtime and keeps working without JS, where
+   the rail simply stays unfilled and the entries read as a plain chronology. */
 
-.tl__rail {
+.tline {
   position: relative;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+  padding-bottom: var(--s16);
+}
+
+.tline__item {
   display: flex;
-  /* `safe` centre: centres while it fits, but falls back to start alignment
-     once the rail overflows, so the first year can still be scrolled to. */
-  justify-content: safe center;
-  gap: clamp(.75rem, 2.5vw, 2rem);
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding-bottom: var(--s6);
-  margin-bottom: var(--s8);
+  justify-content: flex-start;
+  padding-top: clamp(3rem, 9vw, 9rem);
 }
-.tl__rail::-webkit-scrollbar { display: none; }
-/* The spine the markers sit on. */
-.tl__rail::after {
-  content: "";
+@media (min-width: 800px) { .tline__item { gap: var(--s12); } }
+
+/* The year sticks while its entry scrolls past — the device that makes the
+   whole thing read as a timeline rather than a stack of cards. */
+.tline__side {
+  position: sticky;
+  top: calc(var(--nav-h) + 3rem);
+  z-index: 4;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: max-content;
+}
+@media (min-width: 800px) { .tline__side { width: 22rem; } }
+
+.tline__dot {
   position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 1px;
-  background: var(--border-default);
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: var(--r-pill);
+  background: var(--bg-base);
+}
+.tline__dot::after {
+  content: "";
+  width: 14px; height: 14px;
+  border-radius: var(--r-pill);
+  background: var(--bg-tint);
+  border: 1px solid var(--border-strong);
+  transition: background var(--t-state) var(--e-state), border-color var(--t-state) var(--e-state);
+}
+/* Marks every entry the rail has already reached. */
+.tline__item.is-passed .tline__dot::after {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
-.tl__year {
-  position: relative;
-  flex: none;
-  padding: 0 0 var(--s4);
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  font-family: var(--font-mono);
-  font-size: var(--fs-data);
-  letter-spacing: .06em;
+.tline__year {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1;
   color: var(--text-muted);
   transition: color var(--t-state) var(--e-state);
 }
-.tl__year::after {
-  content: "";
+.tline__item.is-passed .tline__year { color: var(--text-primary); }
+/* Desktop shows the sticky year; mobile shows one inline in the body instead. */
+.tline__year:not(.tline__year--m) { display: none; }
+.tline__year--m { margin-bottom: var(--s4); }
+@media (min-width: 800px) {
+  .tline__side .tline__year { display: block; padding-left: 5rem; }
+  .tline__year--m { display: none; }
+}
+
+.tline__body {
+  position: relative;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: var(--s2);
+}
+@media (min-width: 800px) { .tline__body { padding-left: var(--s4); } }
+.tline__body > p { color: var(--text-secondary); max-width: 58ch; }
+.tline__body > p + * { margin-top: var(--s6); }
+
+.tline__list { list-style: none; padding: 0; margin-top: var(--s4); display: grid; gap: var(--s2); }
+.tline__list li {
+  display: flex;
+  gap: .6rem;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+.tline__list li::before { content: "\2713"; color: var(--accent); flex: none; }
+
+.tline__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+  margin-top: var(--s8);
+}
+.tline__grid img {
+  width: 100%;
+  height: clamp(90px, 22vw, 240px);
+  object-fit: cover;
+  object-position: top;      /* these are tall boards; the hero area is the part worth showing */
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-hairline);
+  box-shadow: var(--shadow-md);
+}
+
+/* The rail. A static track with a fill whose height JS drives from scroll
+   progress; the mask fades both ends so it never terminates abruptly. */
+.tline__rail {
   position: absolute;
-  left: 50%; bottom: -4px;
-  width: 9px; height: 9px;
-  transform: translateX(-50%);
+  left: calc(var(--page-pad) + 20px);
+  top: 0;
+  bottom: var(--s16);
+  width: 2px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, transparent, var(--border-default) 12%,
+                              var(--border-default) 88%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
+}
+/* --fill is registered so it can be animated: an unregistered custom property
+   is just a token to the engine and cannot interpolate. */
+@property --fill {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.tline__fill {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 100%;
+  transform-origin: top;
+  transform: scaleY(var(--fill));   /* scale, not height — stays on the compositor */
   border-radius: var(--r-pill);
-  background: var(--border-default);
-  border: 2px solid var(--bg-tint);
-  transition: background var(--t-state) var(--e-state), transform var(--t-state) var(--e-enter);
-}
-.tl__year:hover { color: var(--text-primary); }
-.tl__year[aria-selected="true"] { color: var(--accent-text); font-weight: 600; }
-.tl__year[aria-selected="true"]::after {
-  background: var(--brand-deep);
-  transform: translateX(-50%) scale(1.4);
+  /* The original ran purple -> blue; this is the palette's own brick -> camel. */
+  background: linear-gradient(to top, var(--brick) 0%, var(--camel) 45%, transparent 100%);
 }
 
-.tl__panel { max-width: 62ch; margin-inline: auto; }
-.tl__panel h3 {
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  margin-bottom: var(--s3);
-}
-.tl__panel p { color: var(--text-secondary); }
-.tl__panel .micro { display: block; margin-bottom: var(--s3); color: var(--accent-text); }
+/* Preferred path: a scroll-driven animation. No listener, no rAF, no main-thread
+   work at all — the browser ties the fill directly to scroll position. The JS
+   below only registers itself when this is unsupported. */
+@supports (animation-timeline: view()) {
+  .tline { view-timeline-name: --tline-view; }
+  .tline__fill {
+    animation: tline-fill linear both;
+    animation-timeline: --tline-view;
+    animation-range: entry 90% exit 45%;
+  }
+  @keyframes tline-fill { from { --fill: 0; } to { --fill: 1; } }
 
-/* JS-only. Without .is-tabbed every panel stays visible in order. */
-.is-tabbed .tl__panel { display: none; }
-.is-tabbed .tl__panel.is-active { display: block; animation: tl-in var(--t-enter) var(--e-enter); }
-@keyframes tl-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  /* Each marker lights as its own entry reaches the viewport, which removes the
+     need for JS to track which dots the fill has passed. */
+  .tline__dot::after,
+  .tline__side .tline__year {
+    animation: tline-on linear both;
+    animation-timeline: view();
+    animation-range: entry 55% cover 25%;
+  }
+  @keyframes tline-on {
+    to { background: var(--accent); border-color: var(--accent); }
+  }
+  .tline__side .tline__year { animation-name: tline-year-on; }
+  @keyframes tline-year-on { to { color: var(--text-primary); } }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .is-tabbed .tl__panel.is-active { animation: none; }
+  .tline__side { position: static; }
 }
-/* No-JS: the year buttons do nothing, so present them as plain labels. */
-html:not(.js) .tl__year { cursor: default; }
-html:not(.js) .tl__panel { margin-bottom: var(--s8); }
 
 /* ---- Testimonials -------------------------------------------------------- */
 
@@ -974,6 +1079,8 @@ html:not(.js) .tl__panel { margin-bottom: var(--s8); }
 }
 .footer a { color: var(--ink-text-dim); text-decoration: none;
             transition: color var(--t-micro) var(--e-state); }
+/* Same treatment for the footer list: 19px was under the minimum. */
+.footer__nav a { display: inline-block; padding-block: .4rem; margin-block: -.4rem; }
 .footer a:hover { color: var(--ink-text); }
 
 .footer__base {

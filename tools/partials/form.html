@@ -1,8 +1,16 @@
-<form class="inquiry inquiry--mid reveal" id="inquiry-form" name="inquiry" method="POST"
-                action="thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="inquiry">
+<!-- Posts to FormSubmit, which needs no account and takes the destination
+               address in the action URL. The previous Netlify Forms setup could
+               never deliver: Netlify handles that POST at its own edge, so it is
+               inert anywhere else — locally it returned 501 — and even on Netlify
+               the destination is set in their dashboard, never in markup. -->
+          <form class="inquiry inquiry--mid reveal" id="inquiry-form" method="POST"
+                action="https://formsubmit.co/balmacedamarvin@gmail.com">
+            <input type="hidden" name="_subject" value="New project inquiry — marvinbalmaceda.com">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://marvinbalmaceda.com/thank-you.html">
             <p class="hp" aria-hidden="true">
-              <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+              <label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label>
             </p>
 
             <!-- Step rail. Rendered as real markup so it exists without JS,

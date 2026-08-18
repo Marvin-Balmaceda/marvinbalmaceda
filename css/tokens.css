@@ -9,7 +9,10 @@
    ========================================================================== */
 
 :root {
-  color-scheme: light dark;               /* follow the OS until told otherwise */
+  /* Light is the default, not the OS preference. Setting it here rather than
+     only in JS means a visitor with JavaScript disabled still gets light —
+     every light-dark() below resolves off this one declaration. */
+  color-scheme: light;
 }
 :root[data-theme="light"] { color-scheme: light; }
 :root[data-theme="dark"]  { color-scheme: dark;  }

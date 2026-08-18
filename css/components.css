@@ -96,14 +96,18 @@
 .nav__mark .dot { color: var(--accent-text); }
 
 .nav__links { display: flex; gap: var(--s6); align-items: center; }
-.nav__links a {
+/* :not(.btn) matters. `.nav__links a` is (0,1,1) and outranks `.btn--primary`
+   at (0,1,0), so without it the in-menu CTA inherited this colour and the
+   display font — light text on camel, effectively illegible. */
+.nav__links a:not(.btn) {
   font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
   transition: color var(--t-micro) var(--e-state);
 }
-.nav__links a:hover, .nav__links a[aria-current="page"] { color: var(--text-primary); }
+.nav__links a:not(.btn):hover,
+.nav__links a:not(.btn)[aria-current="page"] { color: var(--text-primary); }
 
 .nav__tools { display: flex; align-items: center; gap: var(--s3); }
 
@@ -113,8 +117,12 @@
 .theme-toggle {
   display: grid;
   place-items: center;
-  width: 38px; height: 38px;
-  border: 1px solid var(--border-hairline);
+  width: 42px; height: 42px;
+  /* Translucent currentColor, not a fixed token: the nav is transparent over
+     the hero, where --border-hairline (#2C2726 on a #1F1B1A ground) was
+     invisible and the controls read as floating icons. This adapts to whatever
+     is behind it in either theme. */
+  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
   border-radius: var(--r-pill);
   background: transparent;
   cursor: pointer;
@@ -140,27 +148,48 @@
     padding: var(--s8) var(--page-pad) var(--s12);
     background: var(--bg-base);
     border-bottom: 1px solid var(--border-hairline);
-    transform: translateY(-104%);
-    transition: transform var(--t-state) var(--e-enter);
+    /* Must clear its own height PLUS the nav offset it is anchored to.
+       translateY(-104%) only lifts it 1.04x its height while `top` holds it
+       var(--nav-h) down the page, so the panel's bottom edge landed 56px into
+       the page — a dark slab with the CTA peeking out under the header. */
+    transform: translateY(calc(-100% - var(--nav-h) - 4px));
+    /* visibility also keeps the off-screen links out of the tab order. It is
+       switched with a delay equal to the slide, so closing still animates. */
+    visibility: hidden;
+    transition: transform var(--t-state) var(--e-enter),
+                visibility 0s linear var(--t-state);
   }
-  .nav__links a { font-size: var(--fs-m); font-family: var(--font-display); font-weight: 600; }
-  .nav.is-open .nav__links { transform: translateY(0); }
+  .nav.is-open .nav__links {
+    transform: translateY(0);
+    visibility: visible;
+    transition: transform var(--t-state) var(--e-enter), visibility 0s;
+  }
+  .nav__links a:not(.btn) { font-size: var(--fs-m); font-family: var(--font-display); font-weight: 600; }
   .nav__burger {
-    display: grid; place-items: center;
-    width: 38px; height: 38px; padding: 0;
-    background: transparent; border: 1px solid var(--border-hairline);
+    /* flex + explicit gap, not grid auto-placement: grid spread the bars ~15px
+       apart across the button, so no fixed translate could close them into an
+       X. Here the pitch is exactly 1.5px + 5px, which the rotations below use. */
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 5px;
+    width: 44px; height: 44px; padding: 0;
+    background: transparent;
+    border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
     border-radius: var(--r-pill); cursor: pointer;
   }
   .nav__burger span {
-    display: block; width: 15px; height: 1.5px; background: var(--text-primary);
+    display: block; width: 17px; height: 1.5px; background: var(--text-primary);
     transition: transform var(--t-state) var(--e-state), opacity var(--t-micro) linear;
   }
-  .nav__burger span + span { margin-top: 4px; }
-  .nav.is-open .nav__burger span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav.is-open .nav__burger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .nav.is-open .nav__burger span:nth-child(2) { opacity: 0; }
-  .nav.is-open .nav__burger span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+  .nav.is-open .nav__burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
   .nav__cta { display: none; }
   .nav__cta-m { display: inline-flex; margin-top: var(--s2); }
+  .theme-toggle { width: 44px; height: 44px; }
+  /* The wordmark is the widest thing in the bar at 320px; drop it a notch so it
+     never crowds the two controls. */
+  .nav__mark { font-size: 1rem; }
+  .nav__inner { gap: var(--s3); }
 }
 
 /* ---- The Scroll Window ---------------------------------------------------
@@ -187,7 +216,6 @@
   display: block;
   background: var(--bg-card);
   border: 1px solid var(--border-default);
-  border-radius: var(--r-md);
   overflow: hidden;
   text-decoration: none;
   color: inherit;

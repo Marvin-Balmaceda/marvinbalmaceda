@@ -19,7 +19,10 @@
     # No third-party scripts anywhere on this site, which is what makes a CSP
     # this tight practical. 'unsafe-inline' covers the pre-paint theme script
     # and the handful of inline style attributes.
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
+    # form-action must name formsubmit.co explicitly: with 'self' alone the
+    # browser blocks the inquiry POST and the form fails silently in production
+    # while still appearing to work locally.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'"
 
 [[headers]]
   for = "/fonts/*"
