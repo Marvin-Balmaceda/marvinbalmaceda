@@ -112,9 +112,10 @@
   --s6: 1.5rem;  --s8: 2rem;   --s12: 3rem;   --s16: 4rem;
   --s24: 6rem;   --s32: 8rem;  --s40: 10rem;
 
-  --section-y: clamp(5rem, 9vw, 8rem);
-  --gallery-y: clamp(6rem, 11vw, 10rem);  /* the extra air is what makes it read
-                                             as a gallery rather than a grid */
+  --section-y: clamp(3.75rem, 6.75vw, 6rem);   /* eased down from 5/9vw/8 */
+  --gallery-y: clamp(4.5rem, 8.25vw, 7.5rem);  /* eased down from 6/11vw/10; still
+                                                  more air than --section-y, which is
+                                                  what makes it read as a gallery */
   --page-max: 1240px;
   --page-pad: clamp(1.25rem, 4vw, 2rem);
   --measure:  68ch;

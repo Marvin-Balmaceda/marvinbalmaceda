@@ -562,7 +562,7 @@
 .tline__item {
   display: flex;
   justify-content: flex-start;
-  padding-top: clamp(3rem, 9vw, 9rem);
+  padding-top: clamp(2.5rem, 6.5vw, 6.5rem);   /* eased down from 3/9vw/9 */
 }
 @media (min-width: 800px) { .tline__item { gap: var(--s12); } }
 
